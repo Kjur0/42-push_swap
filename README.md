@@ -16,7 +16,9 @@ Selected algorithm: Min/Max Selection Sort
 
 ### Medium algorithm ($\textbf O(n \sqrt n)$) [$0.2\le disorder\lt0.5$]
 
-Selected algorithm:
+Selected algorithm: index-based bucket sort
+
+
 
 ### Complex algorithm ($\textbf O(n \log n)$) [$disorder\ge0.5$]
 
