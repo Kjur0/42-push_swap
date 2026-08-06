@@ -6,7 +6,7 @@
 #    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/07/28 15:28:51 by kjurkows         ###   ########.fr        #
+#    Updated: 2026/08/06 19:39:51 by kjurkows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ OBJS_DIR	=	objs
 LIBFT_DIR	=	libft
 LIBFT		=	$(LIBFT_DIR)/libft.a
 LIBFT_MAKE	=	$(LIBFT_DIR)/Makefile
-LIBFT_FLAGS	=	-I $(LIBFT_DIR)
-LIBFT_LINK	=	-L $(LIBFT_DIR) -lft
+LIBFT_FLAGS	=	-I$(LIBFT_DIR)
+LIBFT_LINK	=	-L$(LIBFT_DIR) -lft
 
 SRCS		=
 OBJS		=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
