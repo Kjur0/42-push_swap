@@ -6,7 +6,7 @@
 #    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/06 19:59:22 by kjurkows         ###   ########.fr        #
+#    Updated: 2026/08/06 20:43:16 by kjurkows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,9 @@ SRCS		=	sa.c \
 				rr.c \
 				rra.c \
 				rrb.c \
-				rrr.c
+				rrr.c \
+				disorder.c \
+				
 OBJS		=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
 
 all:	$(NAME):
