@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:28:48 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/06 21:09:31 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * @author kjurkows
  * @param b stack **b**
  */
-void	rb(t_list **b)
+void	rrb(t_list **b)
 {
 	t_list	*cur;
 	t_list	*last;
