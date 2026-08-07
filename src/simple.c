@@ -51,14 +51,14 @@ static void	sort_three(t_list **stack, t_op_counts *ops)
 	else if (first > second && second < third && first > third)
 		ra_count(stack, ops);
 	else if (first < second && second > third && first < third)
-		rra_count(stack, ops);
-	else if (first > second && second < third && first < third)
-		sa_count(stack, ops);
-	else if (first < second && second > third && first > third)
 	{
 		rra_count(stack, ops);
 		sa_count(stack, ops);
 	}
+	else if (first > second && second < third && first < third)
+		sa_count(stack, ops);
+	else if (first < second && second > third && first > third)
+		rra_count(stack, ops);
 }
 
 static void	drain_stack_b(t_list **a, t_list **b, t_op_counts *ops)
