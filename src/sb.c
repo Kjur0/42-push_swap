@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:08:14 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:23:13 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/07 02:47:09 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief swap b
@@ -22,16 +23,18 @@
  * @author kjurkows
  * @param b stack **b**
  */
-void	sb(t_list **b)
+int	sb(t_list **b)
 {
 	t_list	*cur;
 	t_list	*tmp;
 
 	cur = *b;
 	if (!cur || !cur->next)
-		return ;
+		return (0);
 	tmp = cur->next;
 	cur->next = tmp->next;
-	tmp->next = tmp;
+	tmp->next = cur;
 	*b = tmp;
+	ft_printf("sb\n");
+	return (1);
 }

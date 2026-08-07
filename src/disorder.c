@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:31:56 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:42:55 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/07 02:20:25 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
  */
 double	calculate_disorder(t_list **a)
 {
-	const int	size = ft_lstsize(*a);
 	int			mistakes;
 	int			total_pairs;
 	t_list		*i;

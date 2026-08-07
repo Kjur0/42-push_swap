@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:46 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/07 01:36:01 by ppalamio          #+#    #+#             */
+/*   Updated: 2026/08/07 01:36:02 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include <algorithms.h>
+#include <bench.h>
 #include <stacks.h>
 
-/** @brief push b
- *
- * Take the first element at the top of **a** and put it at the top of **b**.
- *
- * Do nothing if **a** is empty.
- *
- * @internal
- * @author ppalamio
- * @param a stack **a**
- * @param b stack **b**
- */
-int	pb(t_list **a, t_list **b)
+t_op_counts	complex(t_list **a, t_list **b)
 {
-	t_list	*node;
-
-	if (!*a)
-		return (0);
-	node = *a;
-	*a = node->next;
-	node->next = *b;
-	*b = node;
-	ft_printf("pb\n");
-	return (1);
+	return (medium(a, b));
 }

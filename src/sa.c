@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief swap a
@@ -22,16 +23,18 @@
  * @author kjurkows
  * @param a stack **a**
  */
-void	sa(t_list **a)
+int	sa(t_list **a)
 {
 	t_list	*cur;
 	t_list	*tmp;
 
 	cur = *a;
 	if (!cur || !cur->next)
-		return ;
+		return (0);
 	tmp = cur->next;
 	cur->next = tmp->next;
-	tmp->next = tmp;
+	tmp->next = cur;
 	*a = tmp;
+	ft_printf("sa\n");
+	return (1);
 }

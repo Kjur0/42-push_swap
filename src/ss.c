@@ -6,10 +6,11 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:22:50 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/07 02:47:24 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief swap a/b
@@ -23,8 +24,12 @@
  * @param a stack **a**
  * @param b stack **b**
  */
-void	ss(t_list **a, t_list **b)
+int	ss(t_list **a, t_list **b)
 {
-	sa(a);
-	sb(b);
+	if (sa(a) && sb(b))
+	{
+		ft_printf("ss\n");
+		return (1);
+	}
+	return (0);
 }

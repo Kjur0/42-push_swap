@@ -6,10 +6,11 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 21:09:31 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/07 02:48:05 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief reverse rotate b
@@ -22,18 +23,20 @@
  * @author kjurkows
  * @param b stack **b**
  */
-void	rrb(t_list **b)
+int	rrb(t_list **b)
 {
 	t_list	*cur;
 	t_list	*last;
 
 	cur = *b;
-	if (!cur && !cur->next)
-		return ;
+	if (!cur || !cur->next)
+		return (0);
 	while (cur->next && cur->next->next)
 		cur = cur->next;
 	last = cur->next;
 	cur->next = NULL;
 	last->next = *b;
 	*b = last;
+	ft_printf("rrb\n");
+	return (1);
 }

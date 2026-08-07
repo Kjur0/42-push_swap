@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 21:02:00 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 21:11:47 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/06 22:48:47 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define ALGORITHMS_H
 
 # include <libft.h>
+# include <bench.h>
 
-void	minmax(t_list **a, t_list **b);
-void	medium(t_list **a, t_list **b);
+t_op_counts	simple(t_list **a, t_list **b);
+t_op_counts	medium(t_list **a, t_list **b);
+t_op_counts	complex(t_list **a, t_list **b);
 
 #endif

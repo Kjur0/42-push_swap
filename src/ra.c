@@ -6,10 +6,11 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:26:04 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/07 02:47:50 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief rotate a
@@ -22,18 +23,20 @@
  * @author kjurkows
  * @param a stack **a**
  */
-void	ra(t_list **a)
+int	ra(t_list **a)
 {
 	t_list	*first;
 	t_list	*cur;
 
 	first = *a;
 	cur = *a;
-	if (!cur)
-		return ;
+	if (!cur || !cur->next)
+		return (0);
 	*a = cur->next;
 	while (cur->next)
 		cur = cur->next;
 	cur->next = first;
 	first->next = NULL;
+	ft_printf("ra\n");
+	return (1);
 }

@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   medium_algorithm.c                                 :+:      :+:    :+:   */
+/*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 21:12:15 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 22:01:38 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/07 01:07:23 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <algorithms.h>
 #include <stacks.h>
+#include <bench.h>
 
 static int	get_rank(t_list *lst)
 {
@@ -52,11 +53,10 @@ static int	get_max_pos(t_list *lst)
 	return (max_pos);
 }
 
-void	phase1(t_list **a, t_list **b)
+static void	phase1(t_list **a, t_list **b, t_op_counts *ops)
 {
-	const int	size = ft_lstsize(*a);
-	int			i;
-	int			rank;
+	int		i;
+	int		rank;
 
 	i = 0;
 	while (*a)
@@ -64,21 +64,21 @@ void	phase1(t_list **a, t_list **b)
 		rank = get_rank(*a);
 		if (rank <= i)
 		{
-			pb(a, b);
-			rb(b);
+			pb_count(a, b, ops);
+			rb_count(b, ops);
 			i++;
 		}
 		else if (rank <= i + 15)
 		{
-			pb(a, b);
+			pb_count(a, b, ops);
 			i++;
 		}
 		else
-			ra(a);
+			ra_count(a, ops);
 	}
 }
 
-void	phase2(t_list **a, t_list **b)
+static void	phase2(t_list **a, t_list **b, t_op_counts *ops)
 {
 	int	pos;
 	int	size;
@@ -89,16 +89,20 @@ void	phase2(t_list **a, t_list **b)
 		size = ft_lstsize(*b);
 		if (pos <= size / 2)
 			while (pos-- > 0)
-				rb(b);
+				rb_count(b, ops);
 		else
 			while (size - pos++ > 0)
-				rrb(b);
-		pa(a, b);
+				rrb_count(b, ops);
+		pa_count(a, b, ops);
 	}
 }
 
-void	medium(t_list **a, t_list **b)
+t_op_counts	medium(t_list **a, t_list **b)
 {
-	phase1(a, b);
-	phase2(a, b);
+	t_op_counts	ops;
+
+	ops = init_op_counts();
+	phase1(a, b, &ops);
+	phase2(a, b, &ops);
+	return (ops);
 }
