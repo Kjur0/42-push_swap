@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:31:56 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:20:25 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/08 16:11:07 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ double	calculate_disorder(t_list **a)
 	while (i->next)
 	{
 		j = i->next;
-		while (j->next)
+		while (j)
 		{
 			total_pairs++;
 			if (*((int *)(i->content)) > *((int *)(j->content)))

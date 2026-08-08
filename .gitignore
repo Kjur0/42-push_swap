@@ -1,1 +1,3 @@
-objs
+objs*
+results.txt
+push_swap*

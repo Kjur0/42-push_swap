@@ -6,6 +6,16 @@
 
 ## Instructions
 
+#### Testing
+
+Testing push_swap can be done by running:
+
+```bash
+make test TEST_SIZE=96 TEST_RUNS=42
+```
+
+Results are saved into ``results.txt``. It helps you grade the performance of it.
+
 ## Resources
 
 ## Algorithms

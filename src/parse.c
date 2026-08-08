@@ -6,7 +6,7 @@
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 01:40:23 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 04:49:12 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/08 15:55:12 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,16 @@ int	parse(int argc, char **argv, t_options *options, t_list **stack)
 
 	options->bench_mode = 0;
 	options->algorithm = ALG_ADAPTIVE;
-	index = 1;
-	while (index < argc)
+	index = 0;
+	while (++index < argc)
 	{
 		if (argv[index][0] == '-' && argv[index][1] == '-')
 		{
-			if (!parse_option(argv[index], options))
+			if (!parse_option(argv[index], options) || ft_lstsize(*stack) > 0)
 				return (0);
 		}
 		else if (!parse_tokens(argv[index], stack))
 			return (0);
-		index++;
 	}
 	return (1);
 }

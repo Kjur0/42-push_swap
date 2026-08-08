@@ -6,7 +6,7 @@
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 01:34:58 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 05:23:20 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/08 10:57:12 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ const char	*get_strategy(t_algorithm selected, double disorder)
 {
 	if (selected == ALG_SIMPLE)
 		return ("Simple / O(n^2)");
+	else if (selected == ALG_NONE)
+		return ("None / already sorted");
 	else if (selected == ALG_MEDIUM)
 		return ("Medium / O(n√n)");
 	else if (selected == ALG_COMPLEX)
@@ -50,10 +52,13 @@ static void	print_op_count(const char *operation, int count)
 	ft_putstr_fd((char *)operation, 2);
 	ft_putstr_fd(":\t", 2);
 	ft_putnbr_fd(count, 2);
+	ft_putchar_fd('\t', 2);
 }
 
-void print_bench_a(const t_bench *bench)
+void	print_bench(const t_bench *bench)
 {
+	if (!bench)
+		return ;
 	ft_putstr_fd("[bench] disorder:\t", 2);
 	ft_putnbr_fd((int)(bench->disorder * 100.0), 2);
 	ft_putendl_fd("%", 2);
@@ -63,40 +68,18 @@ void print_bench_a(const t_bench *bench)
 	ft_putnbr_fd(bench->total_ops, 2);
 	ft_putchar_fd('\n', 2);
 	ft_putstr_fd("[bench] ", 2);
-	print_op_count("sa", bench->ops.sa);
-	
-	ft_putchar_fd('\t', 2);
-	print_op_count("sb", bench->ops.sb);
-	ft_putchar_fd('\t', 2);
-	print_op_count("ss", bench->ops.ss);
-	ft_putchar_fd('\t', 2);
-	print_op_count("pa", bench->ops.pa);
-	ft_putchar_fd('\t', 2);
-	print_op_count("pb", bench->ops.pb);
+	print_op_count(" sa", bench->ops.sa);
+	print_op_count(" sb", bench->ops.sb);
+	print_op_count(" ss", bench->ops.ss);
+	print_op_count(" pa", bench->ops.pa);
+	print_op_count(" pb", bench->ops.pb);
 	ft_putchar_fd('\n', 2);
-}
-
-void print_bench_b(const t_bench *bench)
-{
 	ft_putstr_fd("[bench] ", 2);
-	print_op_count("ra", bench->ops.ra);
-	ft_putchar_fd('\t', 2);
-	print_op_count("rb", bench->ops.rb);
-	ft_putchar_fd('\t', 2);
-	print_op_count("rr", bench->ops.rr);
-	ft_putchar_fd('\t', 2);
+	print_op_count(" ra", bench->ops.ra);
+	print_op_count(" rb", bench->ops.rb);
+	print_op_count(" rr", bench->ops.rr);
 	print_op_count("rra", bench->ops.rra);
-	ft_putchar_fd('\t', 2);
 	print_op_count("rrb", bench->ops.rrb);
-	
-	ft_putchar_fd('\t', 2);
 	print_op_count("rrr", bench->ops.rrr);
-}
-
-void	print_bench(const t_bench *bench)
-{
-	if (!bench)
-		return ;
-	print_bench_a(bench);
-	print_bench_b(bench);
+	ft_putchar_fd('\n', 2);
 }
