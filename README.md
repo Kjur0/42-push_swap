@@ -1,24 +1,49 @@
 *This project has been created as part of the 42 curriculum by **ppalamio**, **kjurkows***
 
-<center>
-![push_swap](../../../../ayogun/42-project-badges/blob/main/badges/push_swapn.png)
-</center>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ayogun/42-project-badges/refs/heads/main/badges/push_swapn.png" />
+</p>
 
 ## Description
 
+__`push_swap`__  that implements 3 different sorting algorithms by using a set of instruction utilized on the stack.
+
 ## Instructions
 
-#### Testing
+### Compilation
 
-Testing push_swap can be done by running:
+To compile the `push_swap`, you can use the provided Makefile. Simply run the following command in your terminal:
 
 ```bash
-make test TEST_SIZE=96 TEST_RUNS=42
+make
 ```
 
-Results are saved into ``results.txt``. It helps you grade the performance of it.
+#### Makefile Targets
+
+| Target   | Description                                                              |
+|----------|--------------------------------------------------------------------------|
+| `all`    | Compiles the `push_swap` program                                         |
+| `clean`  | Removes object files                                                     |
+| `fclean` | Removes object files and the `push_swap` program                         |
+| `re`     | Cleans and recompiles the project                                        |
+| `test`   | Compiles the `push_swap_test` program and run a test with default values |
+
+
+### Testing
+
+By default `make test` will run 42 test for every algorithm with 500 unique integers for every iteration.
+
+Parameters can be set dynamically like this:
+
+```bash
+make test TEST_SIZE=999 TEST_RUNS=5
+```
+
+Results are saved into `results.txt` displaying min/max/avg of operations grouped by the 3 implemented algorithms.
 
 ## Resources
+
+### AI usage 
 
 ## Algorithms
 
