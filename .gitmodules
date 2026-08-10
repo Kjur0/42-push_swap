@@ -3,4 +3,4 @@
 	url = https://github.com/Kjur0/42-libft.git
 [submodule "libftprintf"]
 	path = libftprintf
-	url = git@github.com:Kjur0/42-ft_printf.git
+	url = https://github.com/Kjur0/42-ft_printf.git
