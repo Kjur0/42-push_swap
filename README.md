@@ -1,6 +1,8 @@
 *This project has been created as part of the 42 curriculum by **ppalamio**, **kjurkows***
 
+<center>
 ![push_swap](../../../../ayogun/42-project-badges/blob/main/badges/push_swapn.png)
+</center>
 
 ## Description
 
