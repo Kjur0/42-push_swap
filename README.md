@@ -91,15 +91,15 @@ Results are saved into `results.txt` displaying min/max/avg of operations groupe
 
 ## Algorithms
 
-### Simple algorithm ($\textbf O(n^2)$) [$disorder\lt0.2$]
+### Simple algorithm ($`\textbf O(n^2)`$) [$`disorder\lt0.2`$]
 
 Selected algorithm: Min/Max Selection Sort
 
-### Medium algorithm ($\textbf O(n \sqrt n)$) [$0.2\le disorder\lt0.5$]
+### Medium algorithm ($`\textbf O(n \sqrt n)`$) [$`0.2\le disorder\lt0.5`$]
 
 Selected algorithm: index-based bucket sort
 
-### Complex algorithm ($\textbf O(n \log n)$) [$disorder\ge0.5$]
+### Complex algorithm ($`\textbf O (n\log n)`$) [$`disorder\ge0.5`$]
 
 Selected algorithm: 
 
