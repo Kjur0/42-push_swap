@@ -6,11 +6,11 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 17:12:23 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:42:21 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ops.h"
+#include <stack.h>
 
 /** @brief rotate a
  *
@@ -20,14 +20,16 @@
  *
  * @see rotate()
  * @author kjurkows
- * @param a stack **a**
+ * @param a		stack **a**
+ * @param print	whether it should print the operation to `STDOUT`
  * @retval 0 success
  * @retval 1 error
  */
-int	ra(t_stack *a)
+int	ra(t_stack *a, bool print)
 {
 	if (rotate(a))
 		return (1);
-	ft_putendl_fd("ra", 1);
+	if (print)
+		ft_putendl_fd("ra", 1);
 	return (0);
 }

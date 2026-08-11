@@ -6,11 +6,11 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 17:12:03 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:43:41 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ops.h"
+#include <stack.h>
 
 /** @brief reverse rotate a/b
  *
@@ -18,12 +18,13 @@
  *
  * @see rrotate()
  * @author kjurkows
- * @param a stack **a**
- * @param b stack **b**
+ * @param a		stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
  * @retval 0 success
  * @retval 1 error
  */
-int	rrr(t_stack *a, t_stack *b)
+int	rrr(t_stack *a, t_stack *b, bool print)
 {
 	if (rrotate(a))
 		return (1);
@@ -32,6 +33,7 @@ int	rrr(t_stack *a, t_stack *b)
 		rotate(a);
 		return (1);
 	}
-	ft_putendl_fd("rrr", 1);
+	if (print)
+		ft_putendl_fd("rrr", 1);
 	return (0);
 }

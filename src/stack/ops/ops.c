@@ -6,17 +6,16 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 15:09:28 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 17:17:40 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:35:58 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ops.h"
+#include <stack.h>
 
 /** SWAP
  *
  * swap two first elements of a given stack
  *
- * @internal helper for: sa(), sb(), ss()
  * @author kjurkows
  * @param stack stack to swap inside
  * @retval 0 success
@@ -39,7 +38,6 @@ int	swap(t_stack *stack)
  *
  * push first element of a given stack to the top of another one
  *
- * @internal helper for: pa(), pb()
  * @author kjurkows
  * @param to	destination stack
  * @param from	source stack
@@ -67,7 +65,6 @@ int	push(t_stack *to, t_stack *from)
  *
  * The first element becomes the last one.
  *
- * @internal helper for: ra(), rb(), rr()
  * @author kjurkows
  * @param stack	stack to rotate
  * @retval 0 success
@@ -92,7 +89,6 @@ int	rotate(t_stack *stack)
  *
  * The last element becomes the first one.
  *
- * @internal helper for: rra(), rrb(), rrr()
  * @author kjurkows
  * @param stack stack to rotate
  * @retval 0 success

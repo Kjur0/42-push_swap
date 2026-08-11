@@ -6,11 +6,11 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 17:10:00 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:41:40 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ops.h"
+#include <stack.h>
 
 /** @brief swap a/b
  *
@@ -18,12 +18,13 @@
  *
  * @see swap()
  * @author kjurkows
- * @param a stack **a**
- * @param b stack **b**
+ * @param a		stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
  * @retval 0 success
  * @retval 1 error
  */
-int	ss(t_stack *a, t_stack *b)
+int	ss(t_stack *a, t_stack *b, bool print)
 {
 	if (swap(a))
 		return (1);
@@ -32,6 +33,7 @@ int	ss(t_stack *a, t_stack *b)
 		swap(a);
 		return (1);
 	}
-	ft_putendl_fd("ss", 1);
+	if (print)
+		ft_putendl_fd("ss", 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/11 16:48:08 by kjurkows         ###   ########.fr        #
+#    Updated: 2026/08/11 17:44:21 by kjurkows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,8 @@ $(STACK_OBJS_DIR)/%.o: $(STACK_SRCS_DIR)/%.c | $(STACK_OBJS_DIR)
 $(STACK_OBJS_DIR): | $(OBJS_DIR)
 	mkdir -p $(STACK_OBJS_DIR)
 	mkdir -p $(STACK_OBJS_DIR)/ops
+
+modSTACK: $(STACK_LIB)
 ##
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(OBJS_DIR)
@@ -198,4 +200,4 @@ fclean: clean
 re: fclean all
 ##
 
-.PHONY: all clean fclean re test test-build libft libftprintf
+.PHONY: all clean fclean re test test-build libft libftprintf modSTACK
