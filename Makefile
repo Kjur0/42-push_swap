@@ -6,7 +6,7 @@
 #    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/11 17:44:21 by kjurkows         ###   ########.fr        #
+#    Updated: 2026/08/11 18:22:05 by kjurkows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,18 +58,18 @@ STACK_OBJS_DIR	=	$(OBJS_DIR)/stack
 STACK_OBJS		=	$(STACK_SRCS:%.c=$(STACK_OBJS_DIR)/%.o)
 STACK_LIB		=	$(LIBS_DIR)/stack.a
 
-# libft
-LIBFT_DIR	=	libft
-LIBFT		=	$(LIBFT_DIR)/libft.a
-LIBFT_MAKE	=	$(LIBFT_DIR)/Makefile
-LIBFT_FLAGS	=	-I$(LIBFT_DIR)
-LIBFT_LINK	=	-L$(LIBFT_DIR) -lft
+# # libft
+# LIBFT_DIR	=	libft
+# LIBFT		=	$(LIBFT_DIR)/libft.a
+# LIBFT_MAKE	=	$(LIBFT_DIR)/Makefile
+# LIBFT_FLAGS	=	-I$(LIBFT_DIR)
+# LIBFT_LINK	=	-L$(LIBFT_DIR) -lft
 
 # libftprintf
 FT_PRINTF_DIR	=	libftprintf
 FT_PRINTF		=	$(FT_PRINTF_DIR)/libftprintf.a
 FT_PRINTF_MAKE	=	$(FT_PRINTF_DIR)/Makefile
-FT_PRINTF_FLAGS	=	-I$(FT_PRINTF_DIR)/includes
+FT_PRINTF_FLAGS	=	-I$(FT_PRINTF_DIR)/include -I$(FT_PRINTF_DIR)/libft
 FT_PRINTF_LINK	=	-L$(FT_PRINTF_DIR) -lftprintf
 
 all:				$(NAME)
@@ -97,18 +97,18 @@ $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(OBJS_DIR)
 $(TEST_OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(TEST_OBJS_DIR)
 	$(CC) $(TEST_CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
 
-# libft
-$(LIBFT):
-	git submodule update --init --recursive libft
-	$(MAKE) -C $(LIBFT_DIR)
+# # libft
+# $(LIBFT):
+# 	git submodule update --init --recursive libft
+# 	$(MAKE) -C $(LIBFT_DIR)
 
-libft:		$(LIBFT)
-##
+# libft:		$(LIBFT)
+# ##
 
 # libftprintf
 $(FT_PRINTF):
 	git submodule update --init --recursive libftprintf
-	$(MAKE) -C $(FT_PRINTF_DIR)
+	$(MAKE) -C $(FT_PRINTF_DIR) bonus
 
 libftprintf:	$(FT_PRINTF)
 ##
@@ -185,14 +185,14 @@ lib/%: $(LIBS_DIR)/%.a
 
 # cleaning
 clean:
-	if [ -f $(LIBFT_MAKE) ]; then $(MAKE) -C $(LIBFT_DIR) clean; fi
+# 	if [ -f $(LIBFT_MAKE) ]; then $(MAKE) -C $(LIBFT_DIR) clean; fi
 	if [ -f $(FT_PRINTF_MAKE) ]; then $(MAKE) -C $(FT_PRINTF_DIR) clean; fi
 	rm -rf $(OBJS_DIR)
 	rm -rf $(LIBS_DIR)
 	rm -rf $(TEST_OBJS_DIR)
 
 fclean: clean
-	if [ -f $(LIBFT_MAKE) ]; then $(MAKE) -C $(LIBFT_DIR) fclean; fi
+# 	if [ -f $(LIBFT_MAKE) ]; then $(MAKE) -C $(LIBFT_DIR) fclean; fi
 	if [ -f $(FT_PRINTF_MAKE) ]; then $(MAKE) -C $(FT_PRINTF_DIR) fclean; fi
 	rm -f $(NAME)
 	rm -f $(TEST_NAME)
