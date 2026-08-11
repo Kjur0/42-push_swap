@@ -22,7 +22,8 @@ void	print_stack(const char *name, const t_list *stack)
 	ft_printf("[STACK %s]:", name);
 	while (stack)
 	{
-		ft_printf(" %d:%d", ((const t_stack_element *)stack->content)->index, ((const t_stack_element *)stack->content)->number);
+		ft_printf(" %d:%d", ((const t_stack_element *)stack->content)->index,
+			((const t_stack_element *)stack->content)->number);
 		stack = stack->next;
 	}
 	ft_printf("\n");

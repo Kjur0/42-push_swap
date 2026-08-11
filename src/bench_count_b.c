@@ -17,7 +17,7 @@ void	do_ra(t_list **a, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(ra(a))
+		if (ra(a))
 		{
 			ops->ra++;
 			ft_putendl_fd("ra", 1);
@@ -29,7 +29,7 @@ void	do_rb(t_list **b, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(rb(b))
+		if (rb(b))
 		{
 			ops->rb++;
 			ft_putendl_fd("rb", 1);
@@ -41,7 +41,7 @@ void	do_rr(t_list **a, t_list **b, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(rr(a, b))
+		if (rr(a, b))
 		{
 			ops->rr++;
 			ft_putendl_fd("rr", 1);
@@ -53,7 +53,7 @@ void	do_rra(t_list **a, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(rra(a))
+		if (rra(a))
 		{
 			ops->rra++;
 			ft_putendl_fd("rra", 1);
@@ -65,7 +65,7 @@ void	do_rrb(t_list **b, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(rrb(b))
+		if (rrb(b))
 		{
 			ops->rrb++;
 			ft_putendl_fd("rrb", 1);

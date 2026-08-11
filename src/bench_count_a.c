@@ -18,7 +18,7 @@ void	do_sa(t_list **a, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(sa(a))
+		if (sa(a))
 		{
 			ops->sa++;
 			ft_putendl_fd("sa", 1);
@@ -30,7 +30,7 @@ void	do_sb(t_list **b, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(sb(b))
+		if (sb(b))
 		{
 			ops->sb++;
 			ft_putendl_fd("sb", 1);
@@ -42,7 +42,7 @@ void	do_ss(t_list **a, t_list **b, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(ss(a, b))
+		if (ss(a, b))
 		{
 			ops->ss++;
 			ft_putendl_fd("ss", 1);
@@ -54,7 +54,7 @@ void	do_pa(t_list **a, t_list **b, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(pa(a, b))
+		if (pa(a, b))
 		{
 			ops->pa++;
 			ft_putendl_fd("pa", 1);
@@ -66,7 +66,7 @@ void	do_pb(t_list **a, t_list **b, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(pb(a, b))
+		if (pb(a, b))
 		{
 			ops->pb++;
 			ft_putendl_fd("pb", 1);

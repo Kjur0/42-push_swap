@@ -17,7 +17,7 @@ void	do_rrr(t_list **a, t_list **b, t_op_counts *ops)
 {
 	if (ops)
 	{
-		if(rrr(a, b))
+		if (rrr(a, b))
 		{
 			ops->rrr++;
 			ft_putendl_fd("rrr", 1);

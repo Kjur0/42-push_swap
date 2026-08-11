@@ -33,9 +33,9 @@ static void	free_split(char **split)
 
 static int	add_number(t_list **stack, const char *token)
 {
-	int		value;
-	t_list	*node;
-	t_stack_element *heap;
+	int				value;
+	t_list			*node;
+	t_stack_element	*heap;
 
 	if (!ft_isdigit(*token) && *token != '-' && *token != '+')
 		return (0);

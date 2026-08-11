@@ -16,7 +16,7 @@
 
 static int	get_top_value(t_list *stack)
 {
-	return ((t_stack_element *)stack->content)->index;
+	return (((t_stack_element *)stack->content)->index);
 }
 
 static int	get_min_value(t_list *stack)
@@ -44,7 +44,6 @@ static void	sort_three(t_list **stack, t_op_counts *ops)
 	first = (((t_stack_element *)(*stack)->content))->index;
 	second = (((t_stack_element *)(*stack)->next->content))->index;
 	third = (((t_stack_element *)(*stack)->next->next->content))->index;
-	
 	if (first > second && second > third)
 	{
 		do_sa(stack, ops);
@@ -81,7 +80,8 @@ t_op_counts	simple(t_list **a, t_list **b)
 	size = ft_lstsize(*a);
 	if (size == 2)
 	{
-		if ((((t_stack_element *)(*a)->content)->index) > (((t_stack_element *)(*a)->next->content)->index))
+		if ((((t_stack_element *)(*a)->content)->index)
+			> (((t_stack_element *)(*a)->next->content)->index))
 			do_sa(a, &ops);
 		return (ops);
 	}

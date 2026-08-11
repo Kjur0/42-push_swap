@@ -39,7 +39,8 @@ double	calculate_disorder(t_list **a)
 		while (j)
 		{
 			total_pairs++;
-			if(((t_stack_element *)i->content)->index > ((t_stack_element *)j->content)->index)
+			if (((t_stack_element *)i->content)->index
+				> ((t_stack_element *)j->content)->index)
 				mistakes++;
 			j = j->next;
 		}
