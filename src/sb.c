@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief swap b
@@ -35,6 +34,5 @@ int	sb(t_list **b)
 	cur->next = tmp->next;
 	tmp->next = cur;
 	*b = tmp;
-	ft_printf("sb\n");
 	return (1);
 }

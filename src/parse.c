@@ -6,13 +6,14 @@
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 01:40:23 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/08 15:55:12 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 18:29:52 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <libft.h>
 #include <bench.h>
+#include <normalize.h>
 #include <parse.h>
 
 static void	free_split(char **split)
@@ -34,7 +35,7 @@ static int	add_number(t_list **stack, const char *token)
 {
 	int		value;
 	t_list	*node;
-	int		*heap;
+	t_stack_element *heap;
 
 	if (!ft_isdigit(*token) && *token != '-' && *token != '+')
 		return (0);
@@ -42,14 +43,15 @@ static int	add_number(t_list **stack, const char *token)
 	node = *stack;
 	while (node)
 	{
-		if (*(int *)node->content == value)
+		if (((t_stack_element *)node->content)->number == value)
 			return (0);
 		node = node->next;
 	}
-	heap = malloc(sizeof(int));
+	heap = malloc(sizeof(*heap));
 	if (!heap)
 		return (0);
-	*heap = value;
+	heap->number = value;
+	heap->index = 0;
 	ft_lstadd_back(stack, ft_lstnew(heap));
 	return (1);
 }
@@ -110,5 +112,6 @@ int	parse(int argc, char **argv, t_options *options, t_list **stack)
 		else if (!parse_tokens(argv[index], stack))
 			return (0);
 	}
+	normalize_stack(*stack);
 	return (1);
 }

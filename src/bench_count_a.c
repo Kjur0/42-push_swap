@@ -6,39 +6,70 @@
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 01:05:33 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 01:05:36 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 19:55:54 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 #include <bench.h>
 #include <stacks.h>
 
-void	sa_count(t_list **a, t_op_counts *ops)
+void	do_sa(t_list **a, t_op_counts *ops)
 {
 	if (ops)
-		ops->sa += sa(a);
+	{
+		if(sa(a))
+		{
+			ops->sa++;
+			ft_putendl_fd("sa", 1);
+		}
+	}
 }
 
-void	sb_count(t_list **b, t_op_counts *ops)
+void	do_sb(t_list **b, t_op_counts *ops)
 {
 	if (ops)
-		ops->sb += sb(b);
+	{
+		if(sb(b))
+		{
+			ops->sb++;
+			ft_putendl_fd("sb", 1);
+		}
+	}
 }
 
-void	ss_count(t_list **a, t_list **b, t_op_counts *ops)
+void	do_ss(t_list **a, t_list **b, t_op_counts *ops)
 {
 	if (ops)
-		ops->ss += ss(a, b);
+	{
+		if(ss(a, b))
+		{
+			ops->ss++;
+			ft_putendl_fd("ss", 1);
+		}
+	}
 }
 
-void	pa_count(t_list **a, t_list **b, t_op_counts *ops)
+void	do_pa(t_list **a, t_list **b, t_op_counts *ops)
 {
 	if (ops)
-		ops->pa += pa(a, b);
+	{
+		if(pa(a, b))
+		{
+			ops->pa++;
+			ft_putendl_fd("pa", 1);
+		}
+	}
 }
 
-void	pb_count(t_list **a, t_list **b, t_op_counts *ops)
+void	do_pb(t_list **a, t_list **b, t_op_counts *ops)
 {
 	if (ops)
-		ops->pb += pb(a, b);
+	{
+		if(pb(a, b))
+		{
+			ops->pb++;
+			ft_putendl_fd("pb", 1);
+		}
+	}
 }

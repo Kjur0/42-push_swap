@@ -6,11 +6,10 @@
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:01:44 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 02:45:43 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief push a
@@ -34,6 +33,5 @@ int	pa(t_list **a, t_list **b)
 	*b = node->next;
 	node->next = *a;
 	*a = node;
-	ft_printf("pa\n");
 	return (1);
 }

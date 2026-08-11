@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/11 17:03:46 by ppalamio          #+#    #+#             */
+/*   Updated: 2026/08/11 19:48:58 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <normalize.h>
 
-/** @brief push b
- *
- * Take the first element at the top of **a** and put it at the top of **b**.
- *
- * Do nothing if **a** is empty.
- *
- * @internal
- * @author ppalamio
- * @param a stack **a**
- * @param b stack **b**
- */
-int	pb(t_list **a, t_list **b)
+void	normalize_stack(t_list *stack)
 {
-	t_list	*node;
+	t_list			*current;
+	t_list			*other;
+	t_stack_element	*value;
 
-	if (!*a)
-		return (0);
-	node = *a;
-	*a = node->next;
-	node->next = *b;
-	*b = node;
-	return (1);
+	current = stack;
+	while (current)
+	{
+		other = stack;
+		value = (t_stack_element *)current->content;
+		value->index = 0;
+		while (other)
+		{
+			if (((t_stack_element *)other->content)->number < value->number)
+				value->index++;
+			other = other->next;
+		}
+		current = current->next;
+	}
 }

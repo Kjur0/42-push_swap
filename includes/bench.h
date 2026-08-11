@@ -6,7 +6,7 @@
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 00:27:56 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 01:41:55 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 19:51:40 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ typedef struct s_bench
 
 t_op_counts		init_op_counts(void);
 int				total_op_count(const t_op_counts *ops);
-void			sa_count(t_list **a, t_op_counts *ops);
-void			sb_count(t_list **b, t_op_counts *ops);
-void			ss_count(t_list **a, t_list **b, t_op_counts *ops);
-void			pa_count(t_list **a, t_list **b, t_op_counts *ops);
-void			pb_count(t_list **a, t_list **b, t_op_counts *ops);
-void			ra_count(t_list **a, t_op_counts *ops);
-void			rb_count(t_list **b, t_op_counts *ops);
-void			rr_count(t_list **a, t_list **b, t_op_counts *ops);
-void			rra_count(t_list **a, t_op_counts *ops);
-void			rrb_count(t_list **b, t_op_counts *ops);
-void			rrr_count(t_list **a, t_list **b, t_op_counts *ops);
+void			do_sa(t_list **a, t_op_counts *ops);
+void			do_sb(t_list **b, t_op_counts *ops);
+void			do_ss(t_list **a, t_list **b, t_op_counts *ops);
+void			do_pa(t_list **a, t_list **b, t_op_counts *ops);
+void			do_pb(t_list **a, t_list **b, t_op_counts *ops);
+void			do_ra(t_list **a, t_op_counts *ops);
+void			do_rb(t_list **b, t_op_counts *ops);
+void			do_rr(t_list **a, t_list **b, t_op_counts *ops);
+void			do_rra(t_list **a, t_op_counts *ops);
+void			do_rrb(t_list **b, t_op_counts *ops);
+void			do_rrr(t_list **a, t_list **b, t_op_counts *ops);
 
 #endif

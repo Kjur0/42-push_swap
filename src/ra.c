@@ -6,11 +6,10 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:50 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief rotate a
@@ -37,6 +36,5 @@ int	ra(t_list **a)
 		cur = cur->next;
 	cur->next = first;
 	first->next = NULL;
-	ft_printf("ra\n");
 	return (1);
 }

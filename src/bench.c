@@ -6,7 +6,7 @@
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 01:34:58 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/08 10:57:12 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 20:06:19 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	total_op_count(const t_op_counts *ops)
 
 const char	*get_strategy(t_algorithm selected, double disorder)
 {
-	if (selected == ALG_SIMPLE)
-		return ("Simple / O(n^2)");
-	else if (selected == ALG_NONE)
+	if (selected == ALG_NONE)
 		return ("None / already sorted");
+	else if (selected == ALG_SIMPLE)
+		return ("Simple / O(n^2)");
 	else if (selected == ALG_MEDIUM)
 		return ("Medium / O(n√n)");
 	else if (selected == ALG_COMPLEX)
@@ -39,10 +39,10 @@ const char	*get_strategy(t_algorithm selected, double disorder)
 	else if (selected == ALG_ADAPTIVE)
 	{
 		if (disorder < 0.2)
-			return ("Adaptive / O(n^2)");
+			return ("Simple / O(n^2)");
 		if (disorder < 0.5)
-			return ("Adaptive / O(n√n)");
-		return ("Adaptive / O(n log n)");
+			return ("Medium / O(n√n)");
+		return ("Complex / O(n log n)");
 	}
 	return (NULL);
 }

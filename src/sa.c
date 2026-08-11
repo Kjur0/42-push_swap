@@ -6,11 +6,10 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:00:36 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:22:06 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief swap a
@@ -35,6 +34,5 @@ int	sa(t_list **a)
 	cur->next = tmp->next;
 	tmp->next = cur;
 	*a = tmp;
-	ft_printf("sa\n");
 	return (1);
 }

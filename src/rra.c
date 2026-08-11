@@ -6,11 +6,10 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:48:01 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
 
 /** @brief reverse rotate a
@@ -37,6 +36,5 @@ int	rra(t_list **a)
 	cur->next = NULL;
 	last->next = *a;
 	*a = last;
-	ft_printf("rra\n");
 	return (1);
 }

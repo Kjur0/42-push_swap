@@ -6,7 +6,7 @@
 #    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/08 15:21:11 by ppalamio         ###   ########.fr        #
+#    Updated: 2026/08/11 20:52:44 by ppalamio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,8 @@ SRCS_DIR	=	src
 OBJS_DIR	=	objs
 TEST_OBJS_DIR	=	objs_test
 
-LIBFT_DIR	=	libft
+LIBFT_DIR	=	libftprintf/libft
 LIBFT		=	$(LIBFT_DIR)/libft.a
-LIBFT_MAKE	=	$(LIBFT_DIR)/Makefile
 LIBFT_FLAGS	=	-I$(LIBFT_DIR)
 LIBFT_LINK	=	-L$(LIBFT_DIR) -lft
 
@@ -57,7 +56,8 @@ SRCS		= main.c \
 				medium.c \
 				complex.c \
 				parse.c \
-				print_stack.c
+				print_stack.c \
+				normalize.c
 				
 OBJS		=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
 TEST_OBJS	=	$(SRCS:%.c=$(TEST_OBJS_DIR)/%.o)
@@ -65,7 +65,7 @@ TEST_CFLAGS	=	$(CFLAGS) -DTEST
 
 all:				libs $(OBJS) $(NAME)
 
-libs:				submodules libft ftprintf
+libs:				submodules ftprintf
 
 $(NAME):
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
@@ -84,11 +84,6 @@ $(OBJS_DIR):
 
 $(TEST_OBJS_DIR):
 	mkdir -p $(TEST_OBJS_DIR)
-
-$(LIBFT):			$(LIBFT_MAKE)
-	$(MAKE) -C $(LIBFT_DIR)
-
-libft:				$(LIBFT)
 
 $(FT_PRINTF):			$(FT_PRINTF_MAKE)
 	$(MAKE) -C $(FT_PRINTF_DIR)
@@ -128,7 +123,6 @@ test:				$(TEST_NAME)
 		printf 'checker_linux is required to run the benchmark.\n' >&2; exit 1; \
 	fi; \
 	rm -rf "$$output_dir"; \
-	trap 'rm -rf "$$output_dir"' EXIT; \
 	mkdir -p "$$output_dir"; \
 	printf 'Push_swap benchmark results\nInput size: %s\nRuns per algorithm: %s\n\n' \
 		"$$size" "$$runs" > "$$results_file"; \

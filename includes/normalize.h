@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   normalize.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/11 17:10:09 by ppalamio          #+#    #+#             */
+/*   Updated: 2026/08/11 17:48:31 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <libft.h>
 
-/** @brief push b
- *
- * Take the first element at the top of **a** and put it at the top of **b**.
- *
- * Do nothing if **a** is empty.
- *
- * @internal
- * @author ppalamio
- * @param a stack **a**
- * @param b stack **b**
- */
-int	pb(t_list **a, t_list **b)
+typedef struct s_stack_element
 {
-	t_list	*node;
+	int	number;
+	int	index;
 
-	if (!*a)
-		return (0);
-	node = *a;
-	*a = node->next;
-	node->next = *b;
-	*b = node;
-	return (1);
-}
+}	t_stack_element;
+
+void	normalize_stack(t_list *stack);
