@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:01:44 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 15:42:15 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 16:35:14 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
  */
 int	pa(t_list **a, t_list **b, t_op_counts *opc)
 {
-	if (_push(a, b))
+	if (push(a, b))
 		return (1);
 	opc->pa++;
 	ft_putendl_fd("pa", 1);

@@ -1,3 +1,4 @@
-objs*
+build/
+lib/
 results.txt
 push_swap*

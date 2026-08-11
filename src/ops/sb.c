@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:08:14 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 15:32:39 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 16:35:52 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  */
 int	sb(t_list **b, t_op_counts *opc)
 {
-	if (_swap(b))
+	if (swap(b))
 		return (1);
 	opc->sb++;
 	ft_putendl_fd("sb", 1);

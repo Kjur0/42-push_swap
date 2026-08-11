@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 15:39:21 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 16:35:56 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
  */
 int	ss(t_list **a, t_list **b, t_op_counts *opc)
 {
-	if (_swap(a))
+	if (swap(a))
 		return (1);
-	if (_swap(b))
+	if (swap(b))
 	{
-		_swap(a);
+		swap(a);
 		return (1);
 	}
 	opc->ss++;

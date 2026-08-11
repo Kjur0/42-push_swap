@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 15:42:09 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 16:35:20 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  */
 void	ra(t_list **a, t_op_counts *opc)
 {
-	if (_rotate(a))
+	if (rotate(a))
 		return (1);
 	opc->ra++;
 	ft_putendl_fd("ra", 1);

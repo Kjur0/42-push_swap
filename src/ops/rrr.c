@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 15:42:53 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/11 16:35:40 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
  */
 int	rrr(t_list **a, t_list **b, t_op_counts *opc)
 {
-	if (_rrotate(a))
+	if (rrotate(a))
 		return (1);
-	if (_rrotate(b))
+	if (rrotate(b))
 	{
-		_rrotate(a);
+		rotate(a);
 		return (1);
 	}
 	opc->rrr++;

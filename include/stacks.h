@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 19:49:16 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/08 15:24:04 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 15:05:55 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_stack(const char *name, const t_list *stack);
  * @author kjurkows
  * @param a stack **a**
  */
-int		sa(t_list **a);
+void	sa(t_list **a);
 /** @brief swap b
  *
  * Swap the first two elements at the top of stack **b**
@@ -38,7 +38,7 @@ int		sa(t_list **a);
  * @author kjurkows
  * @param b stack **b**
  */
-int		sb(t_list **b);
+void	sb(t_list **b);
 /** @brief swap a/b
  *
  * swap a & swap b at the same time
@@ -50,7 +50,7 @@ int		sb(t_list **b);
  * @param a stack **a**
  * @param b stack **b**
  */
-int		ss(t_list **a, t_list **b);
+void	ss(t_list **a, t_list **b);
 /** @brief push a
  *
  * Take the first element at the top of **b** and put it at the top of **a**.
@@ -62,7 +62,7 @@ int		ss(t_list **a, t_list **b);
  * @param a stack **a**
  * @param b stack **b**
  */
-int		pa(t_list **a, t_list **b);
+void	pa(t_list **a, t_list **b);
 /** @brief push b
  *
  * Take the first element at the top of **a** and put it at the top of **b**.
@@ -74,7 +74,7 @@ int		pa(t_list **a, t_list **b);
  * @param a stack **a**
  * @param b stack **b**
  */
-int		pb(t_list **a, t_list **b);
+void	pb(t_list **a, t_list **b);
 /** @brief rotate a
  *
  * Shift up all elements of stack **a** by one.
@@ -85,7 +85,7 @@ int		pb(t_list **a, t_list **b);
  * @author kjurkows
  * @param a stack **a**
  */
-int		ra(t_list **a);
+void	ra(t_list **a);
 /** @brief rotate b
  *
  * Shift up all elements of stack **b** by one.
@@ -96,7 +96,7 @@ int		ra(t_list **a);
  * @author kjurkows
  * @param b stack **b**
  */
-int		rb(t_list **b);
+void	rb(t_list **b);
 /** @brief rotate a/b
  *
  * rotate a & rotate b at the same time
@@ -108,7 +108,7 @@ int		rb(t_list **b);
  * @param a stack **a**
  * @param b stack **b**
  */
-int		rr(t_list **a, t_list **b);
+void	rr(t_list **a, t_list **b);
 /** @brief reverse rotate a
  *
  * Shift down all elements of stack **a** by one.
@@ -119,7 +119,7 @@ int		rr(t_list **a, t_list **b);
  * @author kjurkows
  * @param a stack **a**
  */
-int		rra(t_list **a);
+void	rra(t_list **a);
 /** @brief reverse rotate b
  *
  * Shift down all elements of stack **b** by one.
@@ -130,7 +130,7 @@ int		rra(t_list **a);
  * @author kjurkows
  * @param b stack **b**
  */
-int		rrb(t_list **b);
+void	rrb(t_list **b);
 /** @brief reverse rotate a/b
  *
  * reverse rotate a & reverse rotate b at the same time
@@ -142,6 +142,6 @@ int		rrb(t_list **b);
  * @param a stack **a**
  * @param b stack **b**
  */
-int		rrr(t_list **a, t_list **b);
+void	rrr(t_list **a, t_list **b);
 
 #endif
