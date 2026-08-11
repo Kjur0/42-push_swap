@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   pb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:24 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
+/*   Updated: 2026/08/11 15:42:20 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
+#include <bench.h>
+#include "_ops.h"
 
-/** @brief swap a/b
+/** @brief push b
  *
- * swap a & swap b at the same time
+ * Take the first element at the top of **a** and put it at the top of **b**.
+ *
+ * Do nothing if **a** is empty.
  *
  * @internal
- * @see sa()
- * @see sb()
- * @author kjurkows
+ * @author ppalamio
  * @param a stack **a**
  * @param b stack **b**
  */
-int	ss(t_list **a, t_list **b)
+int	pb(t_list **a, t_list **b, t_op_counts *opc)
 {
-	if (sa(a) && sb(b))
-	{
-		ft_printf("ss\n");
+	if (_push(b, a))
 		return (1);
-	}
+	opc->pb++;
+	ft_putendl_fd("pb", 0);
 	return (0);
 }

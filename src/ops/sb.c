@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   sb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:08:14 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:09 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 15:32:39 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
+#include <bench.h>
 
 /** @brief swap b
  *
@@ -23,18 +23,11 @@
  * @author kjurkows
  * @param b stack **b**
  */
-int	sb(t_list **b)
+int	sb(t_list **b, t_op_counts *opc)
 {
-	t_list	*cur;
-	t_list	*tmp;
-
-	cur = *b;
-	if (!cur || !cur->next)
-		return (0);
-	tmp = cur->next;
-	cur->next = tmp->next;
-	tmp->next = cur;
-	*b = tmp;
-	ft_printf("sb\n");
-	return (1);
+	if (_swap(b))
+		return (1);
+	opc->sb++;
+	ft_putendl_fd("sb", 1);
+	return (0);
 }

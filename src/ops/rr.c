@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:46 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 15:42:03 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
+#include <bench.h>
 
-/** @brief push b
+/** @brief rotate a/b
  *
- * Take the first element at the top of **a** and put it at the top of **b**.
- *
- * Do nothing if **a** is empty.
+ * rotate a & rotate b at the same time
  *
  * @internal
- * @author ppalamio
+ * @see ra()
+ * @see rb()
+ * @author kjurkows
  * @param a stack **a**
  * @param b stack **b**
  */
-int	pb(t_list **a, t_list **b)
+int	rr(t_list **a, t_list **b, t_op_counts *opc)
 {
-	t_list	*node;
-
-	if (!*a)
-		return (0);
-	node = *a;
-	*a = node->next;
-	node->next = *b;
-	*b = node;
-	ft_printf("pb\n");
-	return (1);
+	if (_rotate(a))
+		return (1);
+	if (_rotate(b))
+	{
+		_rotate(a);
+		return (1);
+	}
+	opc->rr++;
+	ft_putendl_fd("rr", 1);
+	return (0);
 }

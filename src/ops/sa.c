@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrb.c                                              :+:      :+:    :+:   */
+/*   sa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:48:05 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:00:36 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 15:32:12 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
+#include <bench.h>
+#include "_ops.h"
 
-/** @brief reverse rotate b
+/** @brief swap a
  *
- * Shift down all elements of stack **b** by one.
+ * Swap the first two elements at the top of stack **a**.
  *
- * The last element becomes the first one.
+ * Do nothing if there is only one or no elements.
  *
  * @internal
  * @author kjurkows
- * @param b stack **b**
+ * @param a stack **a**
  */
-int	rrb(t_list **b)
+int	sa(t_list **a, t_op_counts *opc)
 {
-	t_list	*cur;
-	t_list	*last;
-
-	cur = *b;
-	if (!cur || !cur->next)
-		return (0);
-	while (cur->next && cur->next->next)
-		cur = cur->next;
-	last = cur->next;
-	cur->next = NULL;
-	last->next = *b;
-	*b = last;
-	ft_printf("rrb\n");
-	return (1);
+	if (_swap(a))
+		return (1);
+	opc->sa++;
+	ft_putendl_fd("sa", 1);
+	return (0);
 }

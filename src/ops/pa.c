@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:01:44 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 02:45:43 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 15:42:15 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
+#include <bench.h>
+#include "_ops.h"
 
 /** @brief push a
  *
@@ -24,16 +25,11 @@
  * @param a stack **a**
  * @param b stack **b**
  */
-int	pa(t_list **a, t_list **b)
+int	pa(t_list **a, t_list **b, t_op_counts *opc)
 {
-	t_list	*node;
-
-	if (!*b)
-		return (0);
-	node = *b;
-	*b = node->next;
-	node->next = *a;
-	*a = node;
-	ft_printf("pa\n");
-	return (1);
+	if (_push(a, b))
+		return (1);
+	opc->pa++;
+	ft_putendl_fd("pa", 1);
+	return (0);
 }

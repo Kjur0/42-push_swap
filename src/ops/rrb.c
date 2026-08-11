@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:50 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 15:41:58 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
+#include <bench.h>
 
-/** @brief rotate a
+/** @brief reverse rotate b
  *
- * Shift up all elements of stack **a** by one.
+ * Shift down all elements of stack **b** by one.
  *
- * The first element becomes the last one.
+ * The last element becomes the first one.
  *
  * @internal
  * @author kjurkows
- * @param a stack **a**
+ * @param b stack **b**
  */
-int	ra(t_list **a)
+int	rrb(t_list **b, t_op_counts *opc)
 {
-	t_list	*first;
-	t_list	*cur;
-
-	first = *a;
-	cur = *a;
-	if (!cur || !cur->next)
-		return (0);
-	*a = cur->next;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = first;
-	first->next = NULL;
-	ft_printf("ra\n");
-	return (1);
+	if (_rrotate(b))
+		return (1);
+	opc->rrb++;
+	ft_putendl_fd("rrb", 1);
+	return (0);
 }

@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:57 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 15:42:09 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
 #include <stacks.h>
+#include <bench.h>
 
-/** @brief rotate a/b
+/** @brief rotate a
  *
- * rotate a & rotate b at the same time
+ * Shift up all elements of stack **a** by one.
+ *
+ * The first element becomes the last one.
  *
  * @internal
- * @see ra()
- * @see rb()
  * @author kjurkows
  * @param a stack **a**
- * @param b stack **b**
  */
-int	rr(t_list **a, t_list **b)
+void	ra(t_list **a, t_op_counts *opc)
 {
-	if (ra(a) && rb(b))
-	{
-		ft_printf("rr\n");
+	if (_rotate(a))
 		return (1);
-	}
+	opc->ra++;
+	ft_putendl_fd("ra", 1);
 	return (0);
 }
