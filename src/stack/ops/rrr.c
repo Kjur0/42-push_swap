@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:00:36 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 16:35:50 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:12:03 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
-#include <bench.h>
-#include "_ops.h"
+#include "ops.h"
 
-/** @brief swap a
+/** @brief reverse rotate a/b
  *
- * Swap the first two elements at the top of stack **a**.
+ * reverse rotate a & reverse rotate b at the same time
  *
- * Do nothing if there is only one or no elements.
- *
- * @internal
+ * @see rrotate()
  * @author kjurkows
  * @param a stack **a**
+ * @param b stack **b**
+ * @retval 0 success
+ * @retval 1 error
  */
-int	sa(t_list **a, t_op_counts *opc)
+int	rrr(t_stack *a, t_stack *b)
 {
-	if (swap(a))
+	if (rrotate(a))
 		return (1);
-	opc->sa++;
-	ft_putendl_fd("sa", 1);
+	if (rrotate(b))
+	{
+		rotate(a);
+		return (1);
+	}
+	ft_putendl_fd("rrr", 1);
 	return (0);
 }

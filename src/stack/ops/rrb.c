@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pb.c                                               :+:      :+:    :+:   */
+/*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 16:35:16 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:11:56 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
-#include <bench.h>
-#include "_ops.h"
+#include "ops.h"
 
-/** @brief push b
+/** @brief reverse rotate b
  *
- * Take the first element at the top of **a** and put it at the top of **b**.
+ * Shift down all elements of stack **b** by one.
  *
- * Do nothing if **a** is empty.
+ * The last element becomes the first one.
  *
- * @internal
- * @author ppalamio
- * @param a stack **a**
+ * @see rrotate()
+ * @author kjurkows
  * @param b stack **b**
+ * @retval 0 success
+ * @retval 1 error
  */
-int	pb(t_list **a, t_list **b, t_op_counts *opc)
+int	rrb(t_stack *b)
 {
-	if (push(b, a))
+	if (rrotate(b))
 		return (1);
-	opc->pb++;
-	ft_putendl_fd("pb", 0);
+	ft_putendl_fd("rrb", 1);
 	return (0);
 }

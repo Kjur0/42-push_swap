@@ -6,7 +6,7 @@
 #    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/11 16:35:05 by kjurkows         ###   ########.fr        #
+#    Updated: 2026/08/11 16:48:08 by kjurkows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,23 +40,23 @@ SRCS			=	main.c \
 
 OBJS			=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
 
-# module OPS
-OPS_SRCS_DIR	=	$(SRCS_DIR)/ops
-OPS_SRCS		=	ops.c \
-					sa.c \
-					sb.c \
-					ss.c \
-					pa.c \
-					pb.c \
-					ra.c \
-					rb.c \
-					rr.c \
-					rra.c \
-					rrb.c \
-					rrr.c
-OPS_OBJS_DIR	=	$(OBJS_DIR)/ops
-OPS_OBJS		=	$(OPS_SRCS:%.c=$(OPS_OBJS_DIR)/%.o)
-OPS_LIB			=	$(LIBS_DIR)/ops.a
+# module STACK
+STACK_SRCS_DIR	=	$(SRCS_DIR)/stack
+STACK_SRCS		=	ops/ops.c \
+					ops/sa.c \
+					ops/sb.c \
+					ops/ss.c \
+					ops/pa.c \
+					ops/pb.c \
+					ops/ra.c \
+					ops/rb.c \
+					ops/rr.c \
+					ops/rra.c \
+					ops/rrb.c \
+					ops/rrr.c
+STACK_OBJS_DIR	=	$(OBJS_DIR)/stack
+STACK_OBJS		=	$(STACK_SRCS:%.c=$(STACK_OBJS_DIR)/%.o)
+STACK_LIB		=	$(LIBS_DIR)/stack.a
 
 # libft
 LIBFT_DIR	=	libft
@@ -74,22 +74,23 @@ FT_PRINTF_LINK	=	-L$(FT_PRINTF_DIR) -lftprintf
 
 all:				$(NAME)
 
-$(NAME):			$(LIBFT) $(FT_PRINTF) $(OBJS) $(OPS_LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+$(NAME):			$(LIBFT) $(FT_PRINTF) $(OBJS) $(STACK_LIB)
+	$(CC) $(CFLAGS) $(OBJS) $(STACK_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+
+# module STACK
+$(STACK_LIB): $(STACK_OBJS) | $(LIBS_DIR)
+	ar rcs $@ $<
+
+$(STACK_OBJS_DIR)/%.o: $(STACK_SRCS_DIR)/%.c | $(STACK_OBJS_DIR)
+	$(CC) $(CFLAGS) $(LIBFT_FLAGS) -c $< -o $@
+
+$(STACK_OBJS_DIR): | $(OBJS_DIR)
+	mkdir -p $(STACK_OBJS_DIR)
+	mkdir -p $(STACK_OBJS_DIR)/ops
+##
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(OBJS_DIR)
 	$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
-
-# module OPS
-$(OPS_LIB): $(OPS_OBJS) | $(LIBS_DIR)
-	ar rcs $@ $<
-
-$(OPS_OBJS_DIR)/%.o: $(OPS_SRCS_DIR)/%.c | $(OPS_OBJS_DIR)
-	$(CC) $(CFLAGS) $(LIBFT_FLAGS) -c $< -o $@
-
-$(OPS_OBJS_DIR): | $(OPS_OBJS_DIR)
-	mkdir -p $(OPS_OBJS_DIR)
-##
 
 $(TEST_OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(TEST_OBJS_DIR)
 	$(CC) $(TEST_CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
@@ -119,7 +120,7 @@ $(OBJS_DIR):
 ##
 
 $(TEST_NAME):		$(TEST_OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(TEST_CFLAGS) $(TEST_OBJS) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+	$(CC) $(TEST_CFLAGS) $(TEST_OBJS) $(STACK_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
 test:				$(TEST_NAME)
 	@set -euo pipefail; \
 	output_dir="$(TEST_OUTPUT_DIR)"; \

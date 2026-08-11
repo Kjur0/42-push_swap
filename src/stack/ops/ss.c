@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   ss.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 16:35:20 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:10:00 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
-#include <bench.h>
+#include "ops.h"
 
-/** @brief rotate a
+/** @brief swap a/b
  *
- * Shift up all elements of stack **a** by one.
+ * swap a & swap b at the same time
  *
- * The first element becomes the last one.
- *
- * @internal
+ * @see swap()
  * @author kjurkows
  * @param a stack **a**
+ * @param b stack **b**
+ * @retval 0 success
+ * @retval 1 error
  */
-void	ra(t_list **a, t_op_counts *opc)
+int	ss(t_stack *a, t_stack *b)
 {
-	if (rotate(a))
+	if (swap(a))
 		return (1);
-	opc->ra++;
-	ft_putendl_fd("ra", 1);
+	if (swap(b))
+	{
+		swap(a);
+		return (1);
+	}
+	ft_putendl_fd("ss", 1);
 	return (0);
 }

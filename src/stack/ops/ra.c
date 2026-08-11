@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 16:35:43 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:12:23 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
-#include <bench.h>
+#include "ops.h"
 
-/** @brief rotate a/b
+/** @brief rotate a
  *
- * rotate a & rotate b at the same time
+ * Shift up all elements of stack **a** by one.
  *
- * @internal
- * @see ra()
- * @see rb()
+ * The first element becomes the last one.
+ *
+ * @see rotate()
  * @author kjurkows
  * @param a stack **a**
- * @param b stack **b**
+ * @retval 0 success
+ * @retval 1 error
  */
-int	rr(t_list **a, t_list **b, t_op_counts *opc)
+int	ra(t_stack *a)
 {
 	if (rotate(a))
 		return (1);
-	if (rotate(b))
-	{
-		rrotate(a);
-		return (1);
-	}
-	opc->rr++;
-	ft_putendl_fd("rr", 1);
+	ft_putendl_fd("ra", 1);
 	return (0);
 }

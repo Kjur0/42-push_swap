@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rb.c                                               :+:      :+:    :+:   */
+/*   pb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 16:35:22 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
+/*   Updated: 2026/08/11 17:10:47 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
-#include <bench.h>
+#include "ops.h"
 
-/** @brief rotate b
+/** @brief push b
  *
- * Shift up all elements of stack **b** by one.
+ * Take the first element at the top of **a** and put it at the top of **b**.
  *
- * The first element becomes the last one.
+ * Do nothing if **a** is empty.
  *
- * @internal
- * @author kjurkows
+ * @see push()
+ * @author ppalamio
+ * @param a stack **a**
  * @param b stack **b**
+ * @retval 0 success
+ * @retval 1 error
  */
-int	rb(t_list **b, t_op_counts *opc)
+int	pb(t_stack *a, t_stack *b)
 {
-	if (rotate(b))
+	if (push(b, a))
 		return (1);
-	opc->rb++;
-	ft_putendl_fd("rb", 1);
+	ft_putendl_fd("pb", 0);
 	return (0);
 }

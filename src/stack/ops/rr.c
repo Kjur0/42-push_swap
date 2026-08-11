@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrb.c                                              :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 16:35:32 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:11:47 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
-#include <bench.h>
+#include "ops.h"
 
-/** @brief reverse rotate b
+/** @brief rotate a/b
  *
- * Shift down all elements of stack **b** by one.
+ * rotate a & rotate b at the same time
  *
- * The last element becomes the first one.
- *
- * @internal
+ * @see rotate()
  * @author kjurkows
+ * @param a stack **a**
  * @param b stack **b**
+ * @retval 0 success
+ * @retval 1 error
  */
-int	rrb(t_list **b, t_op_counts *opc)
+int	rr(t_stack *a, t_stack *b)
 {
-	if (rrotate(b))
+	if (rotate(a))
 		return (1);
-	opc->rrb++;
-	ft_putendl_fd("rrb", 1);
+	if (rotate(b))
+	{
+		rrotate(a);
+		return (1);
+	}
+	ft_putendl_fd("rr", 1);
 	return (0);
 }
