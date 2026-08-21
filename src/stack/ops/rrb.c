@@ -1,42 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rra.c                                              :+:      :+:    :+:   */
+/*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:48:01 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:43:28 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief reverse rotate a
+/** @brief reverse rotate b
  *
- * Shift down all elements of stack **a** by one.
+ * Shift down all elements of stack **b** by one.
  *
  * The last element becomes the first one.
  *
- * @internal
+ * @see rrotate()
  * @author kjurkows
- * @param a stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	rra(t_list **a)
+int	rrb(t_stack *b, bool print)
 {
-	t_list	*cur;
-	t_list	*last;
-
-	cur = *a;
-	if (!cur || !cur->next)
-		return (0);
-	while (cur->next && cur->next->next)
-		cur = cur->next;
-	last = cur->next;
-	cur->next = NULL;
-	last->next = *a;
-	*a = last;
-	ft_printf("rra\n");
-	return (1);
+	if (rrotate(b))
+		return (1);
+	if (print)
+		ft_putendl_fd("rrb", 1);
+	return (0);
 }

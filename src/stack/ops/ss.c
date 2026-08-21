@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rb.c                                               :+:      :+:    :+:   */
+/*   ss.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:54 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:41:40 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief rotate b
+/** @brief swap a/b
  *
- * Shift up all elements of stack **b** by one.
+ * swap a & swap b at the same time
  *
- * The first element becomes the last one.
- *
- * @internal
+ * @see swap()
  * @author kjurkows
- * @param b stack **b**
+ * @param a		stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	rb(t_list **b)
+int	ss(t_stack *a, t_stack *b, bool print)
 {
-	t_list	*first;
-	t_list	*cur;
-
-	first = *b;
-	cur = *b;
-	if (!cur || !cur->next)
-		return (0);
-	*b = cur->next;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = first;
-	first->next = NULL;
-	ft_printf("rb\n");
-	return (1);
+	if (swap(a))
+		return (1);
+	if (swap(b))
+	{
+		swap(a);
+		return (1);
+	}
+	if (print)
+		ft_putendl_fd("ss", 1);
+	return (0);
 }

@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   pb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:24 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
+/*   Updated: 2026/08/11 17:42:03 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief swap a/b
+/** @brief push b
  *
- * swap a & swap b at the same time
+ * Take the first element at the top of **a** and put it at the top of **b**.
  *
- * @internal
- * @see sa()
- * @see sb()
- * @author kjurkows
- * @param a stack **a**
- * @param b stack **b**
+ * Do nothing if **a** is empty.
+ *
+ * @see push()
+ * @author ppalamio
+ * @param a		stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	ss(t_list **a, t_list **b)
+int	pb(t_stack *a, t_stack *b, bool print)
 {
-	if (sa(a) && sb(b))
-	{
-		ft_printf("ss\n");
+	if (push(b, a))
 		return (1);
-	}
+	if (print)
+		ft_putendl_fd("pb", 0);
 	return (0);
 }

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bench_count_c.c                                    :+:      :+:    :+:   */
+/*   s_stack.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/07 01:35:45 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 01:35:46 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/11 17:40:15 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:40:34 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <bench.h>
-#include <stacks.h>
+#ifndef S_STACK_H
+# define S_STACK_H
 
-void	rrr_count(t_list **a, t_list **b, t_op_counts *ops)
+/// @brief stack
+typedef struct s_stack
 {
-	if (ops)
-		ops->rrr += rrr(a, b);
-}
+	t_list	*list; ///< linked list
+	size_t	size; ///< stack size
+}	t_stack;
+
+#endif

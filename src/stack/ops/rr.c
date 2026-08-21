@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/07 02:47:50 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:42:56 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief rotate a
+/** @brief rotate a/b
  *
- * Shift up all elements of stack **a** by one.
+ * rotate a & rotate b at the same time
  *
- * The first element becomes the last one.
- *
- * @internal
+ * @see rotate()
  * @author kjurkows
- * @param a stack **a**
+ * @param a		stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	ra(t_list **a)
+int	rr(t_stack *a, t_stack *b, bool print)
 {
-	t_list	*first;
-	t_list	*cur;
-
-	first = *a;
-	cur = *a;
-	if (!cur || !cur->next)
-		return (0);
-	*a = cur->next;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = first;
-	first->next = NULL;
-	ft_printf("ra\n");
-	return (1);
+	if (rotate(a))
+		return (1);
+	if (rotate(b))
+	{
+		rrotate(a);
+		return (1);
+	}
+	if (print)
+		ft_putendl_fd("rr", 1);
+	return (0);
 }
