@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:08:14 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 21:20:28 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 23:36:29 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@
  * @retval 0 success
  * @retval 1 error
  */
-int	sb(t_stack *b, bool print)
+int	sb(t_stack *b, bool print, t_bench *bench)
 {
 	if (swap(b))
 		return (1);
 	if (print)
 		ft_putendl_fd("sb", 1);
+	if (bench)
+		bench->ops.sb++;
 	return (0);
 }

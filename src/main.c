@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 19:48:45 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 23:23:37 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 23:45:54 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Error", 2);
 		return (1);
 	}
-	complex(a, b);
+	complex(a, b, NULL);
 	stack_free(a);
 	stack_free(b);
 	return (0);

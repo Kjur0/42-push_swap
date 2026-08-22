@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:01:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 23:05:49 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 23:44:41 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stack.h>
 
 //!TODO: docs
-void	small_sort(t_stack *a)
+void	small_sort(t_stack *a, t_bench *bench)
 {
 	t_stack_element	*max;
 	t_stack_element	*cur;
@@ -33,96 +33,92 @@ void	small_sort(t_stack *a)
 	if (a->size < 2 || a->size > 3)
 		return ;
 	if (a->size == 3 && a->list == max)
-		ra(a, true);
+		ra(a, true, bench);
 	else if (a->size == 3 && a->list->next == max)
-		rra(a, true);
+		rra(a, true, bench);
 	if (a->list->n_val > a->list->next->n_val)
-		sa(a, true);
+		sa(a, true, bench);
 }
 
 //!TODO: docs
-static void	rotate_to(t_stack *a, t_stack *b,
-	t_stack_element *to_a, t_stack_element *to_b)
+static void	rotate_to(t_stacks s, t_stack_element *to_a, t_stack_element *to_b)
 {
 	if (((t_meta *)to_a->meta)->median == ((t_meta *)to_b->meta)->median)
 	{
-		while (a->list != to_a && b->list != to_b)
+		while (s.a->list != to_a && s.b->list != to_b)
 		{
 			if (((t_meta *)to_a->meta)->median)
-				rr(a, b, true);
+				rr(s.a, s.b, true, s.bench);
 			else
-				rrr(a, b, true);
+				rrr(s.a, s.b, true, s.bench);
 		}
 	}
-	while (a->list != to_a)
+	while (s.a->list != to_a)
 	{
 		if (((t_meta *)to_a->meta)->median)
-			ra(a, true);
+			ra(s.a, true, s.bench);
 		else
-			rra(a, true);
+			rra(s.a, true, s.bench);
 	}
-	while (b->list != to_b)
+	while (s.b->list != to_b)
 	{
 		if (((t_meta *)to_b->meta)->median)
-			rb(b, true);
+			rb(s.b, true, s.bench);
 		else
-			rrb(b, true);
+			rrb(s.b, true, s.bench);
 	}
 }
 
 //!TODO: docs
-void	stage1(t_stack *a, t_stack *b)
+void	stage1(t_stacks stacks)
 {
 	t_stack_element	*cur;
 
-	while (a->size > 3)
+	while (stacks.a->size > 3)
 	{
-		cur = recalculate_meta1(a, b);
-		rotate_to(a, b, cur, ((t_meta *)cur->meta)->target);
-		pb(a, b, true);
+		cur = recalculate_meta1(stacks.a, stacks.b);
+		rotate_to(stacks, cur, ((t_meta *)cur->meta)->target);
+		pb(stacks.a, stacks.b, true, stacks.bench);
 	}
 }
 
 //!TODO: docs
-void	stage2(t_stack *a, t_stack *b)
+void	stage2(t_stacks stacks)
 {
 	t_stack_element	*cur;
 
-	while (b->size > 0)
+	while (stacks.b->size > 0)
 	{
-		cur = recalculate_meta2(a, b);
-		rotate_to(a, b, ((t_meta *)cur->meta)->target, cur);
-		pa(a, b, true);
+		cur = recalculate_meta2(stacks.a, stacks.b);
+		rotate_to(stacks, ((t_meta *)cur->meta)->target, cur);
+		pa(stacks.a, stacks.b, true, stacks.bench);
 	}
 }
 
-void	print_stacks(t_stack *a, t_stack *b);
-
 //!TODO: docs
-void	complex(t_stack *a, t_stack *b)
+void	complex(t_stack *a, t_stack *b, t_bench *bench)
 {
+	t_stacks		stacks;
 	t_stack_element	*cur;
 
-	print_stacks(a, b);
+	stacks.a = a;
+	stacks.b = b;
+	stacks.bench = bench;
 	if (a->size > 3)
-		pb(a, b, true);
+		pb(a, b, true, bench);
 	if (a->size > 3)
-		pb(a, b, true);
+		pb(a, b, true, bench);
 	if (a->size > 3)
-		stage1(a, b);
-	print_stacks(a, b);
-	small_sort(a);
-	print_stacks(a, b);
+		stage1(stacks);
+	small_sort(a, bench);
 	if (b->size > 0)
-		stage2(a, b);
-	print_stacks(a, b);
+		stage2(stacks);
 	cur = recalculate_meta3(a);
 	while (a->list != cur)
 	{
 		if (((t_meta *)cur->meta)->median)
-			ra(a, true);
+			ra(a, true, bench);
 		else
-			rra(a, true);
+			rra(a, true, bench);
 	}
-	print_stacks(a, b);
 }

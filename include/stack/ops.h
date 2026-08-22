@@ -6,14 +6,18 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 17:37:01 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 21:27:39 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 23:48:28 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//!TODO: re: docs
 
 #ifndef OPS_H
 # define OPS_H
 
 # include <stack/s_stack.h>
+
+# include <bench.h>
 
 # include <stdbool.h>
 
@@ -80,7 +84,7 @@ int	rrotate(t_stack *stack);
  * @retval 0 success
  * @retval 1 error
  */
-int	sa(t_stack *a, bool print);
+int	sa(t_stack *a, bool print, t_bench *bench);
 /** @brief swap b
  *
  * Swap the first two elements at the top of stack **b**
@@ -94,7 +98,7 @@ int	sa(t_stack *a, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	sb(t_stack *b, bool print);
+int	sb(t_stack *b, bool print, t_bench *bench);
 /** @brief swap a/b
  *
  * swap a & swap b at the same time
@@ -107,7 +111,7 @@ int	sb(t_stack *b, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	ss(t_stack *a, t_stack *b, bool print);
+int	ss(t_stack *a, t_stack *b, bool print, t_bench *bench);
 /** @brief push a
  *
  * Take the first element at the top of **b** and put it at the top of **a**.
@@ -122,7 +126,7 @@ int	ss(t_stack *a, t_stack *b, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	pa(t_stack *a, t_stack *b, bool print);
+int	pa(t_stack *a, t_stack *b, bool print, t_bench *bench);
 /** @brief push b
  *
  * Take the first element at the top of **a** and put it at the top of **b**.
@@ -137,7 +141,7 @@ int	pa(t_stack *a, t_stack *b, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	pb(t_stack *a, t_stack *b, bool print);
+int	pb(t_stack *a, t_stack *b, bool print, t_bench *bench);
 /** @brief rotate a
  *
  * Shift up all elements of stack **a** by one.
@@ -151,7 +155,7 @@ int	pb(t_stack *a, t_stack *b, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	ra(t_stack *a, bool print);
+int	ra(t_stack *a, bool print, t_bench *bench);
 /** @brief rotate b
  *
  * Shift up all elements of stack **b** by one.
@@ -165,7 +169,7 @@ int	ra(t_stack *a, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	rb(t_stack *b, bool print);
+int	rb(t_stack *b, bool print, t_bench *bench);
 /** @brief rotate a/b
  *
  * rotate a & rotate b at the same time
@@ -178,7 +182,7 @@ int	rb(t_stack *b, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	rr(t_stack *a, t_stack *b, bool print);
+int	rr(t_stack *a, t_stack *b, bool print, t_bench *bench);
 /** @brief reverse rotate a
  *
  * Shift down all elements of stack **a** by one.
@@ -192,7 +196,7 @@ int	rr(t_stack *a, t_stack *b, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	rra(t_stack *a, bool print);
+int	rra(t_stack *a, bool print, t_bench *bench);
 /** @brief reverse rotate b
  *
  * Shift down all elements of stack **b** by one.
@@ -206,7 +210,7 @@ int	rra(t_stack *a, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	rrb(t_stack *b, bool print);
+int	rrb(t_stack *b, bool print, t_bench *bench);
 /** @brief reverse rotate a/b
  *
  * reverse rotate a & reverse rotate b at the same time
@@ -219,6 +223,6 @@ int	rrb(t_stack *b, bool print);
  * @retval 0 success
  * @retval 1 error
  */
-int	rrr(t_stack *a, t_stack *b, bool print);
+int	rrr(t_stack *a, t_stack *b, bool print, t_bench *bench);
 
 #endif
