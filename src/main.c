@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 19:48:45 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 22:17:45 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 23:13:14 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	print_stacks(t_stack *a, t_stack *b)
 		ft_eprintf("%d ", cur->val);
 		cur = cur->next;
 	}
+	ft_eprintf("\n_______________\n");
 }
 
 int	main(int argc, char **argv)
@@ -97,14 +98,12 @@ int	main(int argc, char **argv)
 
 	a = parse(argc, argv, &options);
 	b = stack_init();
-	print_stacks(a, b);
 	if (!a || !b)
 	{
 		ft_putendl_fd("Error", 2);
 		return (1);
 	}
 	complex(a, b);
-	print_stacks(a, b);
 	stack_free(a);
 	stack_free(b);
 	return (0);

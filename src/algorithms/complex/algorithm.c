@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 16:01:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 22:01:14 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 23:05:49 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,24 @@
 //!TODO: docs
 void	small_sort(t_stack *a)
 {
-	if (a->size == 2 && a->list->n_val == 1)
-		sa(a, true);
-	else if (a->size == 3 && a->list->n_val == 2)
+	t_stack_element	*max;
+	t_stack_element	*cur;
+
+	cur = a->list;
+	max = cur;
+	while (cur)
 	{
-		if (a->list->next->n_val == 0)
-			ra(a, true);
-		else
-		{
-			sa(a, true);
-			rra(a, true);
-		}
+		if (max->n_val < cur->n_val)
+			max = cur;
+		cur = cur->next;
 	}
-	else if (a->size == 3 && a->list->next->n_val == 2)
-	{
-		if (a->list->n_val == 1)
-			rra(a, true);
-		else
-		{
-			sa(a, true);
-			ra(a, true);
-		}
-	}
-	else if (a->size == 3 && a->list->n_val == 1)
+	if (a->size < 2 || a->size > 3)
+		return ;
+	if (a->size == 3 && a->list == max)
+		ra(a, true);
+	else if (a->size == 3 && a->list->next == max)
+		rra(a, true);
+	if (a->list->n_val > a->list->next->n_val)
 		sa(a, true);
 }
 
@@ -101,20 +96,26 @@ void	stage2(t_stack *a, t_stack *b)
 	}
 }
 
+void	print_stacks(t_stack *a, t_stack *b);
+
 //!TODO: docs
 void	complex(t_stack *a, t_stack *b)
 {
 	t_stack_element	*cur;
 
+	print_stacks(a, b);
 	if (a->size > 3)
 		pb(a, b, true);
 	if (a->size > 3)
 		pb(a, b, true);
 	if (a->size > 3)
 		stage1(a, b);
+	print_stacks(a, b);
 	small_sort(a);
+	print_stacks(a, b);
 	if (b->size > 0)
 		stage2(a, b);
+	print_stacks(a, b);
 	cur = recalculate_meta3(a);
 	while (a->list != cur)
 	{
@@ -123,4 +124,5 @@ void	complex(t_stack *a, t_stack *b)
 		else
 			rra(a, true);
 	}
+	print_stacks(a, b);
 }

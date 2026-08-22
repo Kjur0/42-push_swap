@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 18:27:17 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 22:09:25 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 23:12:47 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,8 @@ t_stack_element	*find_cheapest(t_stack_element *el)
 	cost = __SIZE_MAX__;
 	while (el)
 	{
-		if ((((t_meta *)((t_meta *)el->meta)->target->meta)->median
-			+ ((t_meta *)el->meta)->median) % 2)
+		if (((t_meta *)((t_meta *)el->meta)->target->meta)->median
+			!= ((t_meta *)el->meta)->median)
 			cur_cost = ((t_meta *)el->meta)->cost
 				+ ((t_meta *)((t_meta *)el->meta)->target->meta)->cost;
 		else if (((t_meta *)((t_meta *)el->meta)->target->meta)->cost

@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/22 19:57:05 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 21:46:07 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 22:39:31 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	ft_sort(int *arr, size_t low, size_t high)
 	pivot = partition(arr, low, high);
 	if (pivot != 0)
 		ft_sort(arr, low, pivot - 1);
-	ft_sort(arr, pivot, high);
+	ft_sort(arr, pivot + 1, high);
 }
 
 static bool	find_repeat(int *arr, size_t size)
