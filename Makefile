@@ -66,44 +66,6 @@ $(LIBS_DIR):
 	@mkdir -p $(LIBS_DIR)
 	@echo -e "$(CYAN)Created libs directory.$(RESET)"
 
-# module STACK
-STACK_SRCS_DIR	=	$(SRCS_DIR)/stack
-STACK_SRCS		=	ops/ops.c \
-					ops/sa.c \
-					ops/sb.c \
-					ops/ss.c \
-					ops/pa.c \
-					ops/pb.c \
-					ops/ra.c \
-					ops/rb.c \
-					ops/rr.c \
-					ops/rra.c \
-					ops/rrb.c \
-					ops/rrr.c
-STACK_OBJS_DIR	=	$(OBJS_DIR)/stack
-STACK_OBJS		=	$(STACK_SRCS:%.c=$(STACK_OBJS_DIR)/%.o)
-STACK_LIB		=	$(LIBS_DIR)/stack.a
-
-$(STACK_LIB): $(STACK_OBJS) | $(LIBS_DIR)
-	@echo -ne "$(BLUE)Compiling module STACK...$(RESET) "
-	@ar rcs $@ $^
-	@echo -e "$(POSITION)$(GREEN)Module STACK compiled successfully!$(RESET)"
-
-$(STACK_OBJS_DIR)/%.o: $(STACK_SRCS_DIR)/%.c | $(STACK_OBJS_DIR)
-	@echo -ne "$(YELLOW)Compiling $(basename $(notdir $<))...$(RESET) "
-	@$(CC) $(CFLAGS) $(LIBFT_FLAGS) -c $< -o $@
-	@echo -e "$(POSITION)$(GREEN)Compiled $(basename $(notdir $<)) successfully!$(RESET)"
-
-$(STACK_OBJS_DIR): | $(OBJS_DIR)
-	@mkdir -p $(STACK_OBJS_DIR)
-	@mkdir -p $(STACK_OBJS_DIR)/ops
-	@echo -e "$(CYAN)Created stack objects directory.$(RESET)"
-
-lib/%: $(LIBS_DIR)/%.a
-
-modSTACK: $(STACK_LIB)
-##
-
 # libftprintf
 FT_PRINTF_DIR	=	libftprintf
 FT_PRINTF		=	$(FT_PRINTF_DIR)/libftprintf.a
@@ -133,6 +95,44 @@ $(LIBFT):			$(FT_PRINTF)
 libft:				$(LIBFT)
 ##
 
+# module STACK
+STACK_SRCS_DIR	=	$(SRCS_DIR)/stack
+STACK_SRCS		=	ops/ops.c \
+					ops/sa.c \
+					ops/sb.c \
+					ops/ss.c \
+					ops/pa.c \
+					ops/pb.c \
+					ops/ra.c \
+					ops/rb.c \
+					ops/rr.c \
+					ops/rra.c \
+					ops/rrb.c \
+					ops/rrr.c
+STACK_OBJS_DIR	=	$(OBJS_DIR)/stack
+STACK_OBJS		=	$(STACK_SRCS:%.c=$(STACK_OBJS_DIR)/%.o)
+STACK_LIB		=	$(LIBS_DIR)/stack.a
+
+$(STACK_LIB): $(STACK_OBJS) | $(LIBS_DIR)
+	@echo -ne "$(BLUE)Compiling module STACK...$(RESET) "
+	@ar rcs $@ $^
+	@echo -e "$(POSITION)$(GREEN)Module STACK compiled successfully!$(RESET)"
+
+$(STACK_OBJS_DIR)/%.o: $(STACK_SRCS_DIR)/%.c | $(STACK_OBJS_DIR) $(FT_PRINTF)
+	@echo -ne "$(YELLOW)Compiling $(basename $(notdir $<))...$(RESET) "
+	@$(CC) $(CFLAGS) $(LIBFT_FLAGS) -c $< -o $@
+	@echo -e "$(POSITION)$(GREEN)Compiled $(basename $(notdir $<)) successfully!$(RESET)"
+
+$(STACK_OBJS_DIR): | $(OBJS_DIR)
+	@mkdir -p $(STACK_OBJS_DIR)
+	@mkdir -p $(STACK_OBJS_DIR)/ops
+	@echo -e "$(CYAN)Created stack objects directory.$(RESET)"
+
+lib/%: $(LIBS_DIR)/%.a
+
+modSTACK: $(STACK_LIB)
+##
+
 SRCS			=	main.c \
 					disorder.c \
 					bench.c \
@@ -153,7 +153,7 @@ $(NAME):			$(STACK_LIB) $(FT_PRINTF) $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(STACK_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
 	@echo -e "$(POSITION)$(GREEN)$(NAME) has been created successfully!$(RESET)"
 
-$(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(OBJS_DIR)
+$(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(OBJS_DIR) $(FT_PRINTF)
 	@echo -ne "$(YELLOW)Compiling $(basename $(notdir $<))...$(RESET) "
 	@$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
 	@echo -e "$(POSITION)$(GREEN)Compiled $(basename $(notdir $<)) successfully!$(RESET)"
@@ -171,7 +171,7 @@ $(TEST_OBJS_DIR):
 	@mkdir -p $(TEST_OBJS_DIR)
 	@echo -e "$(CYAN)Created test objects directory.$(RESET)"
 
-$(TEST_OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(TEST_OBJS_DIR)
+$(TEST_OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(TEST_OBJS_DIR) $(FT_PRINTF)
 	@echo -ne "$(YELLOW)Compiling $(basename $(notdir $<))...$(RESET) "
 	@$(CC) $(TEST_CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
 	@echo -e "$(POSITION)$(GREEN)Compiled $(basename $(notdir $<)) successfully!$(RESET)"
