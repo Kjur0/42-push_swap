@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 19:49:16 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 17:39:49 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 15:53:26 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STACK_H
 
 # include <libft.h>
-# include <stdbool.h>
 
 # include <stack/s_stack.h>
 # include <stack/ops.h>

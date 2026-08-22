@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 17:37:01 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 17:40:09 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 15:52:22 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define OPS_H
 
 # include <stack/s_stack.h>
+
+# include <stdbool.h>
 
 /** SWAP
  *
