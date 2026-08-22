@@ -6,7 +6,7 @@
 #    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/22 21:33:01 by kjurkows         ###   ########.fr        #
+#    Updated: 2026/08/22 23:21:58 by kjurkows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,7 +150,6 @@ ALGS_LIB		=	$(LIBS_DIR)/algs.a
 
 $(ALGS_LIB): $(ALGS_OBJS) $(STACK_LIB) | $(LIBS_DIR)
 	@echo -ne "$(BLUE)Compiling module ALGS...$(RESET) "
-	@cp $(STACK_LIB) $(ALGS_LIB)
 	@ar rcs $@ $^
 	@echo -e "$(POSITION)$(GREEN)Module ALGS compiled successfully!$(RESET)"
 
@@ -174,7 +173,7 @@ OBJS			=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
 
 $(NAME):			$(STACK_LIB) $(ALGS_LIB) $(FT_PRINTF) $(LIBFT) $(OBJS)
 	@echo -ne "$(BLUE)Creating $(NAME)...$(RESET) "
-	@$(CC) $(CFLAGS) $(OBJS) $(STACK_LIB) $(ALGS_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) $(ALGS_LIB) $(STACK_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
 	@echo -e "$(POSITION)$(GREEN)$(NAME) has been created successfully!$(RESET)"
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(OBJS_DIR) $(FT_PRINTF)

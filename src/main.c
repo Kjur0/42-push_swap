@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 19:48:45 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 23:13:14 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 23:23:37 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 // 	return (ALG_COMPLEX);
 // }
 
-// static t_op_counts	run_algorithm(t_algorithm algorithm, t_stack *a, t_stack *b)
+// static t_op_counts	run_algorithm(t_algorithm algorithm, t_stack *a,
+// t_stack *b)
 // {
 // 	if (algorithm == ALG_NONE)
 // 		return (init_op_counts());
@@ -68,27 +69,6 @@
 // 		print_bench(&bench);
 // 	return (1);
 // }
-
-void	print_stacks(t_stack *a, t_stack *b)
-{
-	t_stack_element	*cur;
-
-	ft_eprintf("A (%d):\n", a->size);
-	cur = a->list;
-	while (cur)
-	{
-		ft_eprintf("%d ", cur->val);
-		cur = cur->next;
-	}
-	ft_eprintf("\nB (%d):\n", b->size);
-	cur = b->list;
-	while (cur)
-	{
-		ft_eprintf("%d ", cur->val);
-		cur = cur->next;
-	}
-	ft_eprintf("\n_______________\n");
-}
 
 int	main(int argc, char **argv)
 {
