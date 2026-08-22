@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <algorithms.h>
-#include <stacks.h>
+#include <stack.h>
 #include <bench.h>
 #include <normalize.h>
 
@@ -54,15 +54,15 @@ static int	get_max_pos(t_list *lst)
 	return (max_pos);
 }
 
-static void	phase1(t_list **a, t_list **b, t_op_counts *ops)
+static void	phase1(t_stack *a, t_stack *b, t_op_counts *ops)
 {
 	int		i;
 	int		rank;
 
 	i = 0;
-	while (*a)
+	while (a->list)
 	{
-		rank = get_rank(*a);
+		rank = get_rank(a->list);
 		if (rank <= i)
 		{
 			do_pb(a, b, ops);
@@ -79,15 +79,15 @@ static void	phase1(t_list **a, t_list **b, t_op_counts *ops)
 	}
 }
 
-static void	phase2(t_list **a, t_list **b, t_op_counts *ops)
+static void	phase2(t_stack *a, t_stack *b, t_op_counts *ops)
 {
 	int	pos;
 	int	size;
 
-	while (*b)
+	while (b->list)
 	{
-		pos = get_max_pos(*b);
-		size = ft_lstsize(*b);
+		pos = get_max_pos(b->list);
+		size = (int)b->size;
 		if (pos <= size / 2)
 			while (pos-- > 0)
 				do_rb(b, ops);
@@ -98,7 +98,7 @@ static void	phase2(t_list **a, t_list **b, t_op_counts *ops)
 	}
 }
 
-t_op_counts	medium(t_list **a, t_list **b)
+t_op_counts	medium(t_stack *a, t_stack *b)
 {
 	t_op_counts	ops;
 

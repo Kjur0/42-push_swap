@@ -11,64 +11,34 @@
 /* ************************************************************************** */
 
 #include <bench.h>
-#include <stacks.h>
+#include <stack.h>
 
-void	do_ra(t_list **a, t_op_counts *ops)
+void	do_ra(t_stack *a, t_op_counts *ops)
 {
-	if (ops)
-	{
-		if (ra(a))
-		{
-			ops->ra++;
-			ft_putendl_fd("ra", 1);
-		}
-	}
+	if (ops && !ra(a, true))
+		ops->ra++;
 }
 
-void	do_rb(t_list **b, t_op_counts *ops)
+void	do_rb(t_stack *b, t_op_counts *ops)
 {
-	if (ops)
-	{
-		if (rb(b))
-		{
-			ops->rb++;
-			ft_putendl_fd("rb", 1);
-		}
-	}
+	if (ops && !rb(b, true))
+		ops->rb++;
 }
 
-void	do_rr(t_list **a, t_list **b, t_op_counts *ops)
+void	do_rr(t_stack *a, t_stack *b, t_op_counts *ops)
 {
-	if (ops)
-	{
-		if (rr(a, b))
-		{
-			ops->rr++;
-			ft_putendl_fd("rr", 1);
-		}
-	}
+	if (ops && !rr(a, b, true))
+		ops->rr++;
 }
 
-void	do_rra(t_list **a, t_op_counts *ops)
+void	do_rra(t_stack *a, t_op_counts *ops)
 {
-	if (ops)
-	{
-		if (rra(a))
-		{
-			ops->rra++;
-			ft_putendl_fd("rra", 1);
-		}
-	}
+	if (ops && !rra(a, true))
+		ops->rra++;
 }
 
-void	do_rrb(t_list **b, t_op_counts *ops)
+void	do_rrb(t_stack *b, t_op_counts *ops)
 {
-	if (ops)
-	{
-		if (rrb(b))
-		{
-			ops->rrb++;
-			ft_putendl_fd("rrb", 1);
-		}
-	}
+	if (ops && !rrb(b, true))
+		ops->rrb++;
 }

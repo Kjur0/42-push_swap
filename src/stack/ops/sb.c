@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   sb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:08:14 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:35:58 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief rotate a
+/** @brief swap b
  *
- * Shift up all elements of stack **a** by one.
+ * Swap the first two elements at the top of stack **b**
  *
- * The first element becomes the last one.
+ * Do nothing if there is only one or no elements
  *
- * @internal
+ * @see swap()
  * @author kjurkows
- * @param a stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	ra(t_list **a)
+int	sb(t_stack *b, bool print)
 {
-	t_list	*first;
-	t_list	*cur;
-
-	first = *a;
-	cur = *a;
-	if (!cur || !cur->next)
-		return (0);
-	*a = cur->next;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = first;
-	first->next = NULL;
-	return (1);
+	if (swap(b))
+		return (1);
+	if (print)
+		ft_putendl_fd("sb", 1);
+	return (0);
 }

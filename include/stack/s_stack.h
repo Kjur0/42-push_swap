@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.h                                         :+:      :+:    :+:   */
+/*   s_stack.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:31:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:40:59 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/11 17:40:15 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:40:34 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DISORDER_H
-# define DISORDER_H
+#ifndef S_STACK_H
+# define S_STACK_H
 
-# include <libft.h>
-
-double	calculate_disorder(t_list **a);
+/// @brief stack
+typedef struct s_stack
+{
+	t_list	*list; ///< linked list
+	size_t	size; ///< stack size
+}	t_stack;
 
 #endif

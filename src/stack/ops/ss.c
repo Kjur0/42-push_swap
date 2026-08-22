@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   ss.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:00:36 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:41:40 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief swap a
+/** @brief swap a/b
  *
- * Swap the first two elements at the top of stack **a**.
+ * swap a & swap b at the same time
  *
- * Do nothing if there is only one or no elements.
- *
- * @internal
+ * @see swap()
  * @author kjurkows
- * @param a stack **a**
+ * @param a		stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	sa(t_list **a)
+int	ss(t_stack *a, t_stack *b, bool print)
 {
-	t_list	*cur;
-	t_list	*tmp;
-
-	cur = *a;
-	if (!cur || !cur->next)
-		return (0);
-	tmp = cur->next;
-	cur->next = tmp->next;
-	tmp->next = cur;
-	*a = tmp;
-	return (1);
+	if (swap(a))
+		return (1);
+	if (swap(b))
+	{
+		swap(a);
+		return (1);
+	}
+	if (print)
+		ft_putendl_fd("ss", 1);
+	return (0);
 }

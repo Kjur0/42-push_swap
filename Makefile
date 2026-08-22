@@ -3,109 +3,185 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
+#    By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/11 20:52:44 by ppalamio         ###   ########.fr        #
+#    Updated: 2026/08/22 12:07:05 by ppalamio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC			=	cc
-SHELL		=	/bin/bash
-CFLAGS		=	-Wall -Wextra -Werror -Iincludes
+CC				=	cc
+CFLAGS			=	-Wall -Wextra -Werror -Iinclude
+SHELL			=	/bin/bash
 
-NAME		=	push_swap
-TEST_NAME	=	push_swap_test
-TEST_OUTPUT_DIR	=	test-output
-TEST_SIZE		=	500
-TEST_RUNS		=	42
+NAME			=	push_swap
 
-SRCS_DIR	=	src
-OBJS_DIR	=	objs
-TEST_OBJS_DIR	=	objs_test
+SRCS_DIR		=	src
+OBJS_DIR		=	build
+LIBS_DIR		=	lib
 
-LIBFT_DIR	=	libftprintf/libft
-LIBFT		=	$(LIBFT_DIR)/libft.a
-LIBFT_FLAGS	=	-I$(LIBFT_DIR)
-LIBFT_LINK	=	-L$(LIBFT_DIR) -lft
+RED				=	\033[;31m
+GREEN			=	\033[;32m
+YELLOW			=	\033[;33m
+BLUE			=	\033[;34m
+MAGENTA			=	\033[;35m
+CYAN			=	\033[;36m
+RESET			=	\033[0m
+POSITION		=	\033[2K\r
 
+MAKEFLAGS		+=	--no-print-directory
+
+all:				$(NAME)
+	@echo -e "$(GREEN)$(NAME) is ready to use.$(RESET)"
+
+clean:
+	@if [ -f $(FT_PRINTF_MAKE) ]; then \
+		echo -ne "$(YELLOW)Cleaning libftprintf...$(RESET) "; \
+		$(MAKE) -C $(FT_PRINTF_DIR) clean > /dev/null; \
+		echo -e "$(POSITION)$(RED)libftprintf cleaned successfully!$(RESET)"; \
+	fi
+	@echo -ne "$(YELLOW)Cleaning object files...$(RESET) "
+	@rm -rf $(OBJS_DIR)
+	@rm -rf $(LIBS_DIR)
+	@echo -e "$(POSITION)$(RED)Cleaned object files.$(RESET)"
+
+fclean:				clean
+	@if [ -f $(FT_PRINTF_MAKE) ]; then \
+		echo -ne "$(YELLOW)Fully cleaning libftprintf...$(RESET) "; \
+		$(MAKE) -C $(FT_PRINTF_DIR) fclean > /dev/null; \
+		echo -e "$(POSITION)$(RED)libftprintf fully cleaned successfully!$(RESET)"; \
+	fi
+	@echo -ne "$(YELLOW)Removing $(NAME)...$(RESET) "
+	@rm -f $(NAME)
+	@echo -e "$(POSITION)$(RED)Fully cleaned all generated files.$(RESET)"
+
+re:					fclean all
+	@echo -e "$(GREEN)Rebuild complete!$(RESET)"
+
+$(OBJS_DIR):
+	@mkdir -p $(OBJS_DIR)
+	@echo -e "$(CYAN)Created objects directory.$(RESET)"
+
+$(LIBS_DIR):
+	@mkdir -p $(LIBS_DIR)
+	@echo -e "$(CYAN)Created libs directory.$(RESET)"
+
+# module STACK
+STACK_SRCS_DIR	=	$(SRCS_DIR)/stack
+STACK_SRCS		=	ops/ops.c \
+					ops/sa.c \
+					ops/sb.c \
+					ops/ss.c \
+					ops/pa.c \
+					ops/pb.c \
+					ops/ra.c \
+					ops/rb.c \
+					ops/rr.c \
+					ops/rra.c \
+					ops/rrb.c \
+					ops/rrr.c
+STACK_OBJS_DIR	=	$(OBJS_DIR)/stack
+STACK_OBJS		=	$(STACK_SRCS:%.c=$(STACK_OBJS_DIR)/%.o)
+STACK_LIB		=	$(LIBS_DIR)/stack.a
+
+$(STACK_LIB): $(STACK_OBJS) | $(LIBS_DIR)
+	@echo -ne "$(BLUE)Compiling module STACK...$(RESET) "
+	@ar rcs $@ $^
+	@echo -e "$(POSITION)$(GREEN)Module STACK compiled successfully!$(RESET)"
+
+$(STACK_OBJS_DIR)/%.o: $(STACK_SRCS_DIR)/%.c | $(STACK_OBJS_DIR)
+	@echo -ne "$(YELLOW)Compiling $(basename $(notdir $<))...$(RESET) "
+	@$(CC) $(CFLAGS) $(LIBFT_FLAGS) -c $< -o $@
+	@echo -e "$(POSITION)$(GREEN)Compiled $(basename $(notdir $<)) successfully!$(RESET)"
+
+$(STACK_OBJS_DIR): | $(OBJS_DIR)
+	@mkdir -p $(STACK_OBJS_DIR)
+	@mkdir -p $(STACK_OBJS_DIR)/ops
+	@echo -e "$(CYAN)Created stack objects directory.$(RESET)"
+
+lib/%: $(LIBS_DIR)/%.a
+
+modSTACK: $(STACK_LIB)
+##
+
+# libftprintf
 FT_PRINTF_DIR	=	libftprintf
 FT_PRINTF		=	$(FT_PRINTF_DIR)/libftprintf.a
 FT_PRINTF_MAKE	=	$(FT_PRINTF_DIR)/Makefile
-FT_PRINTF_FLAGS	=	-I$(FT_PRINTF_DIR)/includes
+FT_PRINTF_FLAGS	=	-I$(FT_PRINTF_DIR)/include -I$(FT_PRINTF_DIR)/libft
 FT_PRINTF_LINK	=	-L$(FT_PRINTF_DIR) -lftprintf
 
-SRCS		= main.c \
-				sa.c \
-				sb.c \
-				ss.c \
-				pa.c \
-				pb.c \
-				ra.c \
-				rb.c \
-				rr.c \
-				rra.c \
-				rrb.c \
-				rrr.c \
-				disorder.c \
-				bench.c \
-				bench_count_a.c \
-				bench_count_b.c \
-				bench_count_c.c \
-				simple.c \
-				medium.c \
-				complex.c \
-				parse.c \
-				print_stack.c \
-				normalize.c
-				
-OBJS		=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
-TEST_OBJS	=	$(SRCS:%.c=$(TEST_OBJS_DIR)/%.o)
-TEST_CFLAGS	=	$(CFLAGS) -DTEST
+$(FT_PRINTF):
+	@echo -ne "$(BLUE)Initializing and updating libftprintf submodule...$(RESET) "
+	@git submodule update --init --recursive libftprintf > /dev/null 2>&1
+	@echo -e "$(POSITION)$(GREEN)libftprintf submodule is ready!$(RESET)"
+	@echo -ne "$(BLUE)Compiling libftprintf...$(RESET) "
+	@$(MAKE) -C $(FT_PRINTF_DIR) bonus > /dev/null
+	@echo -e "$(POSITION)$(GREEN)libftprintf has been compiled successfully!$(RESET)"
 
-all:				libs $(OBJS) $(NAME)
+libftprintf:		$(FT_PRINTF)
+##
 
-libs:				submodules ftprintf
+# libft
+LIBFT_DIR		=	libftprintf/libft
+LIBFT			=	$(LIBFT_DIR)/libft.a
+LIBFT_FLAGS		=	-I$(LIBFT_DIR)
+LIBFT_LINK		=	-L$(LIBFT_DIR) -lft
 
-$(NAME):
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+$(LIBFT):			$(FT_PRINTF)
 
-$(TEST_NAME):		$(TEST_OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(TEST_CFLAGS) $(TEST_OBJS) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+libft:				$(LIBFT)
+##
+
+SRCS			=	main.c \
+					disorder.c \
+					bench.c \
+					bench_count_a.c \
+					bench_count_b.c \
+					bench_count_c.c \
+					simple.c \
+					medium.c \
+					complex.c \
+					parse.c \
+					print_stack.c \
+					normalize.c
+
+OBJS			=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
+
+$(NAME):			$(STACK_LIB) $(FT_PRINTF) $(LIBFT) $(OBJS)
+	@echo -ne "$(BLUE)Creating $(NAME)...$(RESET) "
+	@$(CC) $(CFLAGS) $(OBJS) $(STACK_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+	@echo -e "$(POSITION)$(GREEN)$(NAME) has been created successfully!$(RESET)"
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(OBJS_DIR)
-	$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
+	@echo -ne "$(YELLOW)Compiling $(basename $(notdir $<))...$(RESET) "
+	@$(CC) $(CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
+	@echo -e "$(POSITION)$(GREEN)Compiled $(basename $(notdir $<)) successfully!$(RESET)"
 
-$(TEST_OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(TEST_OBJS_DIR)
-	$(CC) $(TEST_CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
-
-$(OBJS_DIR):
-	mkdir -p $(OBJS_DIR)
+# testing
+TEST_NAME		=	push_swap_test
+TEST_OUTPUT_DIR	=	test-output
+TEST_SIZE		=	500
+TEST_RUNS		=	42
+TEST_OBJS_DIR	=	objs_test
+TEST_OBJS		=	$(SRCS:%.c=$(TEST_OBJS_DIR)/%.o)
+TEST_CFLAGS		=	$(CFLAGS) -DTEST
 
 $(TEST_OBJS_DIR):
-	mkdir -p $(TEST_OBJS_DIR)
+	@mkdir -p $(TEST_OBJS_DIR)
+	@echo -e "$(CYAN)Created test objects directory.$(RESET)"
 
-$(FT_PRINTF):			$(FT_PRINTF_MAKE)
-	$(MAKE) -C $(FT_PRINTF_DIR)
+$(TEST_OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(TEST_OBJS_DIR)
+	@echo -ne "$(YELLOW)Compiling $(basename $(notdir $<))...$(RESET) "
+	@$(CC) $(TEST_CFLAGS) $(LIBFT_FLAGS) $(FT_PRINTF_FLAGS) -c $< -o $@
+	@echo -e "$(POSITION)$(GREEN)Compiled $(basename $(notdir $<)) successfully!$(RESET)"
 
-ftprintf:			$(FT_PRINTF)
+$(TEST_NAME):		clean_test $(TEST_OBJS) $(LIBFT) $(FT_PRINTF) $(STACK_LIB)
+	@echo -ne "$(BLUE)Creating $(TEST_NAME)...$(RESET) "
+	@$(CC) $(TEST_CFLAGS) $(TEST_OBJS) $(STACK_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+	@echo -e "$(POSITION)$(GREEN)$(TEST_NAME) has been created successfully!$(RESET)"
 
-submodules:
-	git submodule update --init --recursive
-
-clean:
-	if [ -f $(LIBFT) ]; then $(MAKE) -C $(LIBFT_DIR) clean; fi
-	if [ -f $(FT_PRINTF) ]; then $(MAKE) -C $(FT_PRINTF_DIR) clean; fi
-	rm -rf $(OBJS_DIR)
-	rm -rf $(TEST_OBJS_DIR)
-
-fclean:				clean
-	if [ -f $(LIBFT) ]; then $(MAKE) -C $(LIBFT_DIR) fclean; fi
-	if [ -f $(FT_PRINTF) ]; then $(MAKE) -C $(FT_PRINTF_DIR) fclean; fi
-	rm -f $(NAME)
-	rm -f $(TEST_NAME)
-
-re:					fclean all
+test-build:			$(TEST_NAME)
 
 test:				$(TEST_NAME)
 	@set -euo pipefail; \
@@ -123,11 +199,14 @@ test:				$(TEST_NAME)
 		printf 'checker_linux is required to run the benchmark.\n' >&2; exit 1; \
 	fi; \
 	rm -rf "$$output_dir"; \
+	trap 'rm -rf "$$output_dir"' EXIT; \
 	mkdir -p "$$output_dir"; \
+	printf '$(CYAN)Benchmarking push_swap: size=%s, runs=%s per algorithm$(RESET)\n' "$$size" "$$runs"; \
 	printf 'Push_swap benchmark results\nInput size: %s\nRuns per algorithm: %s\n\n' \
 		"$$size" "$$runs" > "$$results_file"; \
 	printf '%-10s %8s %10s %10s %10s\n' \
 		'algorithm' 'runs' 'minimum' 'average' 'maximum' >> "$$results_file"; \
+	printf '$(BLUE)Generating %s input files...$(RESET)' "$$runs"; \
 	for ((run = 1; run <= runs; run++)); do \
 		input_file=$$(printf '%s/input-%s-run-%02d.txt' "$$output_dir" "$$size" "$$run"); \
 		negative_count=$$((size / 2)); \
@@ -135,9 +214,11 @@ test:				$(TEST_NAME)
 		{ shuf -i 1-1000000 -n "$$negative_count" | sed 's/^/-/'; \
 			shuf -i 1-1000000 -n "$$positive_count"; } | shuf > "$$input_file"; \
 	done; \
+	printf '$(POSITION)$(GREEN)Generated %s input files.$(RESET)\n' "$$runs"; \
 	for algorithm in simple medium complex adaptive; do \
 		minimum=''; maximum=0; total=0; \
 		for ((run = 1; run <= runs; run++)); do \
+			printf '$(POSITION)$(YELLOW)Running %-8s [%d/%d]...$(RESET)' "$$algorithm" "$$run" "$$runs"; \
 			prefix=$$(printf '%s/%s-%s-run-%02d' "$$output_dir" "$$algorithm" "$$size" "$$run"); \
 			input_file=$$(printf '%s/input-%s-run-%02d.txt' "$$output_dir" "$$size" "$$run"); \
 			stdout_file="$$prefix.stdout"; stderr_file="$$prefix.stderr"; \
@@ -155,11 +236,18 @@ test:				$(TEST_NAME)
 			total=$$((total + ops)); \
 		done; \
 		average=$$(awk -v total="$$total" -v count="$$runs" 'BEGIN { printf "%.2f", total / count }'); \
+		printf '$(POSITION)$(GREEN)%-8s done: min=%s avg=%s max=%s$(RESET)\n' \
+			"$$algorithm" "$$minimum" "$$average" "$$maximum"; \
 		printf '%-10s %8s %10s %10s %10s\n' \
 			"$$algorithm" "$$runs" "$$minimum" "$$average" "$$maximum" >> "$$results_file"; \
 	done; \
-	printf 'Benchmark results saved in %s\n' "$$results_file"
+	printf '$(GREEN)Benchmark results saved in %s$(RESET)\n' "$$results_file"
 
-test-build:			$(TEST_NAME)
+clean_test:
+	@rm -rf $(TEST_OBJS_DIR)
+	@rm -f $(TEST_NAME)
+	@echo -e "$(POSITION)$(RED)$(TEST_NAME) has been deleted!$(RESET)"
 
-.PHONY: all clean fclean re test test-build submodules libs libft libftprintf
+##
+
+.PHONY: all clean fclean re modSTACK libftprintf libft test test-build clean_test

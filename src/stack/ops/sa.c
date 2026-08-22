@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rra.c                                              :+:      :+:    :+:   */
+/*   sa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 20:00:36 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:35:58 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief reverse rotate a
+/** @brief swap a
  *
- * Shift down all elements of stack **a** by one.
+ * Swap the first two elements at the top of stack **a**.
  *
- * The last element becomes the first one.
+ * Do nothing if there is only one or no elements.
  *
- * @internal
+ * @see swap()
  * @author kjurkows
- * @param a stack **a**
+ * @param a		stack **a**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	rra(t_list **a)
+int	sa(t_stack *a, bool print)
 {
-	t_list	*cur;
-	t_list	*last;
-
-	cur = *a;
-	if (!cur || !cur->next)
-		return (0);
-	while (cur->next && cur->next->next)
-		cur = cur->next;
-	last = cur->next;
-	cur->next = NULL;
-	last->next = *a;
-	*a = last;
-	return (1);
+	if (swap(a))
+		return (1);
+	if (print)
+		ft_putendl_fd("sa", 1);
+	return (0);
 }

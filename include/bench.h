@@ -14,6 +14,7 @@
 # define BENCH_H
 
 # include <libft.h>
+# include <stack/s_stack.h>
 
 typedef struct s_op_counts
 {
@@ -40,16 +41,16 @@ typedef struct s_bench
 
 t_op_counts		init_op_counts(void);
 int				total_op_count(const t_op_counts *ops);
-void			do_sa(t_list **a, t_op_counts *ops);
-void			do_sb(t_list **b, t_op_counts *ops);
-void			do_ss(t_list **a, t_list **b, t_op_counts *ops);
-void			do_pa(t_list **a, t_list **b, t_op_counts *ops);
-void			do_pb(t_list **a, t_list **b, t_op_counts *ops);
-void			do_ra(t_list **a, t_op_counts *ops);
-void			do_rb(t_list **b, t_op_counts *ops);
-void			do_rr(t_list **a, t_list **b, t_op_counts *ops);
-void			do_rra(t_list **a, t_op_counts *ops);
-void			do_rrb(t_list **b, t_op_counts *ops);
-void			do_rrr(t_list **a, t_list **b, t_op_counts *ops);
+void			do_sa(t_stack *a, t_op_counts *ops);
+void			do_sb(t_stack *b, t_op_counts *ops);
+void			do_ss(t_stack *a, t_stack *b, t_op_counts *ops);
+void			do_pa(t_stack *a, t_stack *b, t_op_counts *ops);
+void			do_pb(t_stack *a, t_stack *b, t_op_counts *ops);
+void			do_ra(t_stack *a, t_op_counts *ops);
+void			do_rb(t_stack *b, t_op_counts *ops);
+void			do_rr(t_stack *a, t_stack *b, t_op_counts *ops);
+void			do_rra(t_stack *a, t_op_counts *ops);
+void			do_rrb(t_stack *b, t_op_counts *ops);
+void			do_rrr(t_stack *a, t_stack *b, t_op_counts *ops);
 
 #endif

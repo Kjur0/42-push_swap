@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:42:56 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief reverse rotate a/b
+/** @brief rotate a/b
  *
- * reverse rotate a & reverse rotate b at the same time
+ * rotate a & rotate b at the same time
  *
- * @internal
- * @see ra()
- * @see rb()
+ * @see rotate()
  * @author kjurkows
- * @param a stack **a**
- * @param b stack **b**
+ * @param a		stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	rrr(t_list **a, t_list **b)
+int	rr(t_stack *a, t_stack *b, bool print)
 {
-	if (rra(a) && rrb(b))
+	if (rotate(a))
+		return (1);
+	if (rotate(b))
 	{
+		rrotate(a);
 		return (1);
 	}
+	if (print)
+		ft_putendl_fd("rr", 1);
 	return (0);
 }

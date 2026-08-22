@@ -23,7 +23,7 @@
  * @param a stack **a**
  * @return disorder metric of a stack
  */
-double	calculate_disorder(t_list **a)
+double	calculate_disorder(t_stack *a)
 {
 	int			mistakes;
 	int			total_pairs;
@@ -32,7 +32,7 @@ double	calculate_disorder(t_list **a)
 
 	mistakes = 0;
 	total_pairs = 0;
-	i = *a;
+	i = a->list;
 	while (i->next)
 	{
 		j = i->next;

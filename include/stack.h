@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:10:43 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/06 19:49:16 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/11 17:39:49 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#ifndef STACK_H
+# define STACK_H
 
-/** @brief rotate a/b
- *
- * rotate a & rotate b at the same time
- *
- * @internal
- * @see ra()
- * @see rb()
- * @author kjurkows
- * @param a stack **a**
- * @param b stack **b**
- */
-int	rr(t_list **a, t_list **b)
-{
-	if (ra(a) && rb(b))
-	{
-		return (1);
-	}
-	return (0);
-}
+# include <libft.h>
+# include <stdbool.h>
+
+# include <stack/s_stack.h>
+# include <stack/ops.h>
+
+void	print_stack(const char *name, const t_list *stack);
+
+#endif

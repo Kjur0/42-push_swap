@@ -12,9 +12,9 @@
 
 #include <algorithms.h>
 #include <bench.h>
-#include <stacks.h>
+#include <stack.h>
 
-t_op_counts	complex(t_list **a, t_list **b)
+t_op_counts	complex(t_stack *a, t_stack *b)
 {
 	return (medium(a, b));
 }

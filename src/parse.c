@@ -95,7 +95,7 @@ static int	parse_tokens(char *arg, t_list **stack)
 	return (1);
 }
 
-int	parse(int argc, char **argv, t_options *options, t_list **stack)
+int	parse(int argc, char **argv, t_options *options, t_stack *stack)
 {
 	int	index;
 
@@ -106,12 +106,14 @@ int	parse(int argc, char **argv, t_options *options, t_list **stack)
 	{
 		if (argv[index][0] == '-' && argv[index][1] == '-')
 		{
-			if (!parse_option(argv[index], options) || ft_lstsize(*stack) > 0)
+			if (!parse_option(argv[index], options)
+				|| ft_lstsize(stack->list) > 0)
 				return (0);
 		}
-		else if (!parse_tokens(argv[index], stack))
+		else if (!parse_tokens(argv[index], &stack->list))
 			return (0);
 	}
-	normalize_stack(*stack);
+	stack->size = ft_lstsize(stack->list);
+	normalize_stack(stack->list);
 	return (1);
 }

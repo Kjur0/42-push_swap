@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rb.c                                               :+:      :+:    :+:   */
+/*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:12:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:42:21 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <stack.h>
 
-/** @brief rotate b
+/** @brief rotate a
  *
- * Shift up all elements of stack **b** by one.
+ * Shift up all elements of stack **a** by one.
  *
  * The first element becomes the last one.
  *
- * @internal
+ * @see rotate()
  * @author kjurkows
- * @param b stack **b**
+ * @param a		stack **a**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	rb(t_list **b)
+int	ra(t_stack *a, bool print)
 {
-	t_list	*first;
-	t_list	*cur;
-
-	first = *b;
-	cur = *b;
-	if (!cur || !cur->next)
-		return (0);
-	*b = cur->next;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = first;
-	first->next = NULL;
-	return (1);
+	if (rotate(a))
+		return (1);
+	if (print)
+		ft_putendl_fd("ra", 1);
+	return (0);
 }

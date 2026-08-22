@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 20:08:16 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 17:42:03 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <stack.h>
 
 /** @brief push b
  *
@@ -18,20 +18,19 @@
  *
  * Do nothing if **a** is empty.
  *
- * @internal
+ * @see push()
  * @author ppalamio
- * @param a stack **a**
- * @param b stack **b**
+ * @param a		stack **a**
+ * @param b		stack **b**
+ * @param print	whether it should print the operation to `STDOUT`
+ * @retval 0 success
+ * @retval 1 error
  */
-int	pb(t_list **a, t_list **b)
+int	pb(t_stack *a, t_stack *b, bool print)
 {
-	t_list	*node;
-
-	if (!*a)
-		return (0);
-	node = *a;
-	*a = node->next;
-	node->next = *b;
-	*b = node;
-	return (1);
+	if (push(b, a))
+		return (1);
+	if (print)
+		ft_putendl_fd("pb", 1);
+	return (0);
 }

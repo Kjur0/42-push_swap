@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 #include <libft.h>
-#include <stacks.h>
+#include <stack.h>
 #include <algorithms.h>
 #include <disorder.h>
 #include <bench.h>
@@ -31,7 +31,7 @@ static t_algorithm	select_algorithm(t_algorithm requested, double disorder)
 	return (ALG_COMPLEX);
 }
 
-static t_op_counts	run_algorithm(t_algorithm algorithm, t_list **a, t_list **b)
+static t_op_counts	run_algorithm(t_algorithm algorithm, t_stack *a, t_stack *b)
 {
 	if (algorithm == ALG_NONE)
 		return (init_op_counts());
@@ -44,7 +44,7 @@ static t_op_counts	run_algorithm(t_algorithm algorithm, t_list **a, t_list **b)
 	return (init_op_counts());
 }
 
-static int	process_stack(t_list **a, t_list **b, t_options *options)
+static int	process_stack(t_stack *a, t_stack *b, t_options *options)
 {
 	t_bench		bench;
 	double		disorder;
@@ -68,24 +68,24 @@ static int	process_stack(t_list **a, t_list **b, t_options *options)
 
 int	main(int argc, char **argv)
 {
-	t_list		*a;
-	t_list		*b;
+	t_stack		a;
+	t_stack		b;
 	t_options	options;
 
-	a = NULL;
-	b = NULL;
+	a = (t_stack){NULL, 0};
+	b = (t_stack){NULL, 0};
 	if (!parse(argc, argv, &options, &a))
-		return (ft_putendl_fd("Error", 2), ft_lstclear(&a, free), 1);
-	if (!a)
-		return (ft_lstclear(&a, free), 0);
-	print_stack("A", a);
-	if (!a->next)
+		return (ft_putendl_fd("Error", 2), ft_lstclear(&a.list, free), 1);
+	if (!a.list)
+		return (ft_lstclear(&a.list, free), 0);
+	print_stack("A", a.list);
+	if (!a.list->next)
 	{
-		print_stack("A", a);
-		return (ft_lstclear(&a, free), 0);
+		print_stack("A", a.list);
+		return (ft_lstclear(&a.list, free), 0);
 	}
 	process_stack(&a, &b, &options);
-	print_stack("A", a);
-	ft_lstclear(&a, free);
+	print_stack("A", a.list);
+	ft_lstclear(&a.list, free);
 	return (0);
 }

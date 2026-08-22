@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stacks.h>
+#include <stack.h>
 #include <normalize.h>
 #include <bench.h>
 
@@ -35,15 +35,15 @@ static int	get_min_value(t_list *stack)
 	return (min);
 }
 
-static void	sort_three(t_list **stack, t_op_counts *ops)
+static void	sort_three(t_stack *stack, t_op_counts *ops)
 {
 	int	first;
 	int	second;
 	int	third;
 
-	first = (((t_stack_element *)(*stack)->content))->index;
-	second = (((t_stack_element *)(*stack)->next->content))->index;
-	third = (((t_stack_element *)(*stack)->next->next->content))->index;
+	first = (((t_stack_element *)stack->list->content))->index;
+	second = (((t_stack_element *)stack->list->next->content))->index;
+	third = (((t_stack_element *)stack->list->next->next->content))->index;
 	if (first > second && second > third)
 	{
 		do_sa(stack, ops);
@@ -62,33 +62,33 @@ static void	sort_three(t_list **stack, t_op_counts *ops)
 		do_rra(stack, ops);
 }
 
-static void	drain_stack_b(t_list **a, t_list **b, t_op_counts *ops)
+static void	drain_stack_b(t_stack *a, t_stack *b, t_op_counts *ops)
 {
-	while (*b)
+	while (b->list)
 		do_pa(a, b, ops);
 }
 
-t_op_counts	simple(t_list **a, t_list **b)
+t_op_counts	simple(t_stack *a, t_stack *b)
 {
 	int			min;
-	int			size;
+	size_t		size;
 	t_op_counts	ops;
 
 	ops = init_op_counts();
-	if (!a || !*a || !(*a)->next)
+	if (!a || !a->list || !a->list->next)
 		return (ops);
-	size = ft_lstsize(*a);
+	size = a->size;
 	if (size == 2)
 	{
-		if ((((t_stack_element *)(*a)->content)->index)
-			> (((t_stack_element *)(*a)->next->content)->index))
+		if ((((t_stack_element *)a->list->content)->index)
+			> (((t_stack_element *)a->list->next->content)->index))
 			do_sa(a, &ops);
 		return (ops);
 	}
 	while (size > 3)
 	{
-		min = get_min_value(*a);
-		while (get_top_value(*a) != min)
+		min = get_min_value(a->list);
+		while (get_top_value(a->list) != min)
 			do_ra(a, &ops);
 		do_pb(a, b, &ops);
 		size--;
