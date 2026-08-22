@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex.c                                          :+:      :+:    :+:   */
+/*   last.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/07 01:36:01 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/07 01:36:02 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/22 19:39:43 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/22 21:18:06 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <algorithms.h>
-#include <bench.h>
-#include <stack.h>
+#include <stack/s_stack.h>
 
-t_op_counts	complex(t_stack *a, t_stack *b)
+//!TODO: docs
+t_stack_element	*stack_last(t_stack	*stack)
 {
-	return (medium(a, b));
+	t_stack_element	*cur;
+
+	cur = stack->list;
+	if (!cur)
+		return (cur);
+	while (cur->next)
+		cur = cur->next;
+	return (cur);
 }

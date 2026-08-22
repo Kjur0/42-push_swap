@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bench.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 00:27:56 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 19:51:40 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/22 21:13:45 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//!TODO: delete
 
 #ifndef BENCH_H
 # define BENCH_H

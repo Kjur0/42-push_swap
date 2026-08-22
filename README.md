@@ -1,6 +1,6 @@
 *This project has been created as part of the 42 curriculum by **ppalamio**, **kjurkows***
 
-<p align="center"><img src="https://raw.githubusercontent.com/ayogun/42-project-badges/refs/heads/main/badges/push_swapn.png" /></p>
+# ![push_swap](../../../../ayogun/42-project-badges/blob/main/badges/push_swapn.png)
 
 ## Description
 
@@ -104,4 +104,3 @@ Selected algorithm: index-based bucket sort
 Selected algorithm: 
 
 ## Contributions
-

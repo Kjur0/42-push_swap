@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithms.h                                       :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 21:02:00 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 21:13:10 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/22 18:24:14 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/22 22:09:44 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALGORITHMS_H
-# define ALGORITHMS_H
+#include <stack/s_stack.h>
 
-# include <stack/s_stack.h>
+#include <malloc.h>
 
-void	simple(t_stack *a, t_stack *b);
-void	medium(t_stack *a, t_stack *b);
-void	complex(t_stack *a, t_stack *b);
+//!TODO: docs
+void	stack_free(t_stack	*stack)
+{
+	t_stack_element	*cur;
+	t_stack_element	*nxt;
 
-#endif
+	if (!stack)
+		return ;
+	cur = stack->list;
+	while (cur)
+	{
+		nxt = cur->next;
+		if (cur->meta)
+			free(cur->meta);
+		free (cur);
+		cur = nxt;
+	}
+	free(stack);
+}

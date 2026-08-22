@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithms.h                                       :+:      :+:    :+:   */
+/*   normalize.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 21:02:00 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 21:13:10 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/22 19:55:59 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/22 21:14:44 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALGORITHMS_H
-# define ALGORITHMS_H
+#ifndef NORMALIZE_H
+# define NORMALIZE_H
 
 # include <stack/s_stack.h>
 
-void	simple(t_stack *a, t_stack *b);
-void	medium(t_stack *a, t_stack *b);
-void	complex(t_stack *a, t_stack *b);
+//!TODO: docs
+int	normalize_stack(t_stack *stack);
 
 #endif

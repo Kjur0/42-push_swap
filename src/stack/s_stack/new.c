@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithms.h                                       :+:      :+:    :+:   */
+/*   new.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 21:02:00 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 21:13:10 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/22 20:25:51 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/22 21:18:08 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALGORITHMS_H
-# define ALGORITHMS_H
+#include <stack/s_stack.h>
 
-# include <stack/s_stack.h>
+#include <malloc.h>
 
-void	simple(t_stack *a, t_stack *b);
-void	medium(t_stack *a, t_stack *b);
-void	complex(t_stack *a, t_stack *b);
+//!TODO: docs
+t_stack_element	*stack_new(int val)
+{
+	t_stack_element	*cur;
 
-#endif
+	cur = malloc(sizeof(t_stack_element));
+	if (!cur)
+		return (NULL);
+	cur->meta = NULL;
+	cur->n_val = 0;
+	cur->val = val;
+	return (cur);
+}

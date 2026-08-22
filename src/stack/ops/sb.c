@@ -6,11 +6,13 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:08:14 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 17:35:58 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 21:20:28 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stack.h>
+#include <stack/ops.h>
+
+#include <libft.h>
 
 /** @brief swap b
  *

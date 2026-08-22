@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 01:19:32 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/08 15:24:20 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/22 21:14:22 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//!TODO: delete
 
 #ifndef PARSE_H
 # define PARSE_H

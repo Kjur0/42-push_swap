@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bench_count_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 01:05:33 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/22 10:57:52 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/22 21:22:22 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//!TODO: delete
 
 #include <libft.h>
 #include <bench.h>

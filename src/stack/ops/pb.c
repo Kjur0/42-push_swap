@@ -6,11 +6,13 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:03:17 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 17:42:03 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 21:20:41 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stack.h>
+#include <stack/ops.h>
+
+#include <libft.h>
 
 /** @brief push b
  *

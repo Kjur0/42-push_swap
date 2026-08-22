@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 15:09:28 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/11 17:35:58 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 19:40:52 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  */
 int	swap(t_stack *stack)
 {
-	t_list	*head;
+	t_stack_element	*head;
 
 	if (stack->size < 2)
 		return (1);
@@ -46,7 +46,7 @@ int	swap(t_stack *stack)
  */
 int	push(t_stack *to, t_stack *from)
 {
-	t_list	*node;
+	t_stack_element	*node;
 
 	if (from->size < 1)
 		return (1);
@@ -72,9 +72,9 @@ int	push(t_stack *to, t_stack *from)
  */
 int	rotate(t_stack *stack)
 {
-	t_list	*tail;
+	t_stack_element	*tail;
 
-	tail = ft_lstlast(stack->list);
+	tail = stack_last(stack);
 	if (!tail)
 		return (1);
 	tail->next = stack->list;
@@ -96,7 +96,7 @@ int	rotate(t_stack *stack)
  */
 int	rrotate(t_stack *stack)
 {
-	t_list	*tail;
+	t_stack_element	*tail;
 
 	if (stack->size < 2)
 		return (1);

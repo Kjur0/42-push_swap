@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 17:37:01 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 15:52:22 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 21:27:39 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	rotate(t_stack *stack);
  * @retval 1 error
  */
 int	rrotate(t_stack *stack);
-
 
 /** @brief swap a
  *

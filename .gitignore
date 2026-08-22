@@ -3,3 +3,4 @@ lib/
 objs_test/
 results.txt
 push_swap*
+args

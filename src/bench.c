@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 01:34:58 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 20:06:19 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/22 21:23:09 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//!TODO: later
 
 #include <bench.h>
 #include <parse.h>

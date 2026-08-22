@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normalize.h                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/11 17:10:09 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 17:48:31 by ppalamio         ###   ########.fr       */
+/*   Created: 2026/08/22 19:49:38 by kjurkows          #+#    #+#             */
+/*   Updated: 2026/08/22 21:18:04 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <stack/s_stack.h>
 
-typedef struct s_stack_element
+#include <malloc.h>
+
+//!TODO: docs
+t_stack	*stack_init(void)
 {
-	int	number;
-	int	index;
+	t_stack	*stack;
 
-}	t_stack_element;
-
-void	normalize_stack(t_list *stack);
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
+	stack->list = NULL;
+	stack->size = 0;
+	return (stack);
+}

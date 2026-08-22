@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 21:04:33 by ppalamio          #+#    #+#             */
-/*   Updated: 2026/08/11 21:14:57 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/22 20:18:43 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stack.h>
-#include <normalize.h>
 #include <bench.h>
 
 static int	get_top_value(t_list *stack)

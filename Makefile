@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+         #
+#    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 15:18:28 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/22 12:07:05 by ppalamio         ###   ########.fr        #
+#    Updated: 2026/08/22 21:33:01 by kjurkows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror -Iinclude
+CFLAGS			=	-Wall -Wextra -Werror -Iinclude -g
 SHELL			=	/bin/bash
 
 NAME			=	push_swap
@@ -60,6 +60,7 @@ re:					fclean all
 
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)/parser
 	@echo -e "$(CYAN)Created objects directory.$(RESET)"
 
 $(LIBS_DIR):
@@ -108,7 +109,13 @@ STACK_SRCS		=	ops/ops.c \
 					ops/rr.c \
 					ops/rra.c \
 					ops/rrb.c \
-					ops/rrr.c
+					ops/rrr.c \
+					s_stack/init.c \
+					s_stack/free.c \
+					s_stack/last.c \
+					s_stack/new.c \
+					s_stack/add.c \
+					normalize.c
 STACK_OBJS_DIR	=	$(OBJS_DIR)/stack
 STACK_OBJS		=	$(STACK_SRCS:%.c=$(STACK_OBJS_DIR)/%.o)
 STACK_LIB		=	$(LIBS_DIR)/stack.a
@@ -126,31 +133,48 @@ $(STACK_OBJS_DIR)/%.o: $(STACK_SRCS_DIR)/%.c | $(STACK_OBJS_DIR) $(FT_PRINTF)
 $(STACK_OBJS_DIR): | $(OBJS_DIR)
 	@mkdir -p $(STACK_OBJS_DIR)
 	@mkdir -p $(STACK_OBJS_DIR)/ops
+	@mkdir -p $(STACK_OBJS_DIR)/s_stack
 	@echo -e "$(CYAN)Created stack objects directory.$(RESET)"
-
-lib/%: $(LIBS_DIR)/%.a
 
 modSTACK: $(STACK_LIB)
 ##
 
+# module ALGS
+ALGS_SRCS_DIR	=	$(SRCS_DIR)/algorithms
+ALGS_SRCS		=	complex/algorithm.c \
+					complex/meta.c \
+					complex/meta_helpers.c
+ALGS_OBJS_DIR	=	$(OBJS_DIR)/algs
+ALGS_OBJS		=	$(ALGS_SRCS:%.c=$(ALGS_OBJS_DIR)/%.o)
+ALGS_LIB		=	$(LIBS_DIR)/algs.a
+
+$(ALGS_LIB): $(ALGS_OBJS) $(STACK_LIB) | $(LIBS_DIR)
+	@echo -ne "$(BLUE)Compiling module ALGS...$(RESET) "
+	@cp $(STACK_LIB) $(ALGS_LIB)
+	@ar rcs $@ $^
+	@echo -e "$(POSITION)$(GREEN)Module ALGS compiled successfully!$(RESET)"
+
+$(ALGS_OBJS_DIR)/%.o: $(ALGS_SRCS_DIR)/%.c $(STACK_LIB) | $(ALGS_OBJS_DIR)
+	@echo -ne "$(YELLOW)Compiling $(basename $(notdir $<))...$(RESET) "
+	@$(CC) $(CFLAGS) $(LIBFT_FLAGS) -c $< -o $@
+	@echo -e "$(POSITION)$(GREEN)Compiled $(basename $(notdir $<)) successfully!$(RESET)"
+
+$(ALGS_OBJS_DIR): | $(OBJS_DIR)
+	@mkdir -p $(ALGS_OBJS_DIR)
+	@mkdir -p $(ALGS_OBJS_DIR)/complex
+	@echo -e "$(CYAN)Created algs objects directory.$(RESET)"
+
+modALGS: $(ALGS_LIB)
+##
+
 SRCS			=	main.c \
-					disorder.c \
-					bench.c \
-					bench_count_a.c \
-					bench_count_b.c \
-					bench_count_c.c \
-					simple.c \
-					medium.c \
-					complex.c \
-					parse.c \
-					print_stack.c \
-					normalize.c
+					parser/parser.c
 
 OBJS			=	$(SRCS:%.c=$(OBJS_DIR)/%.o)
 
-$(NAME):			$(STACK_LIB) $(FT_PRINTF) $(LIBFT) $(OBJS)
+$(NAME):			$(STACK_LIB) $(ALGS_LIB) $(FT_PRINTF) $(LIBFT) $(OBJS)
 	@echo -ne "$(BLUE)Creating $(NAME)...$(RESET) "
-	@$(CC) $(CFLAGS) $(OBJS) $(STACK_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) $(STACK_LIB) $(ALGS_LIB) $(LIBFT_LINK) $(FT_PRINTF_LINK) -o $@
 	@echo -e "$(POSITION)$(GREEN)$(NAME) has been created successfully!$(RESET)"
 
 $(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c	|	$(OBJS_DIR) $(FT_PRINTF)
