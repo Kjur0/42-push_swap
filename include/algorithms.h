@@ -15,9 +15,10 @@
 
 # include <libft.h>
 # include <bench.h>
+# include <stack/s_stack.h>
 
-t_op_counts	simple(t_list **a, t_list **b);
-t_op_counts	medium(t_list **a, t_list **b);
-t_op_counts	complex(t_list **a, t_list **b);
+t_op_counts	simple(t_stack *a, t_stack *b);
+t_op_counts	medium(t_stack *a, t_stack *b);
+t_op_counts	complex(t_stack *a, t_stack *b);
 
 #endif

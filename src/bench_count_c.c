@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.h                                         :+:      :+:    :+:   */
+/*   bench_count_c.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:31:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:40:59 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/07 01:35:45 by ppalamio          #+#    #+#             */
+/*   Updated: 2026/08/11 19:59:35 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DISORDER_H
-# define DISORDER_H
+#include <bench.h>
+#include <stack.h>
 
-# include <libft.h>
-# include <stack/s_stack.h>
-
-double	calculate_disorder(t_stack *a);
-
-#endif
+void	do_rrr(t_stack *a, t_stack *b, t_op_counts *ops)
+{
+	if (ops && !rrr(a, b, true))
+		ops->rrr++;
+}

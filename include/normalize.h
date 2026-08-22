@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.h                                         :+:      :+:    :+:   */
+/*   normalize.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: ppalamio <ppalamio@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 20:31:24 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/06 20:40:59 by kjurkows         ###   ########.fr       */
+/*   Created: 2026/08/11 17:10:09 by ppalamio          #+#    #+#             */
+/*   Updated: 2026/08/11 17:48:31 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DISORDER_H
-# define DISORDER_H
+#include <libft.h>
 
-# include <libft.h>
-# include <stack/s_stack.h>
+typedef struct s_stack_element
+{
+	int	number;
+	int	index;
 
-double	calculate_disorder(t_stack *a);
+}	t_stack_element;
 
-#endif
+void	normalize_stack(t_list *stack);

@@ -6,11 +6,12 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:31:56 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/08 16:11:07 by ppalamio         ###   ########.fr       */
+/*   Updated: 2026/08/11 20:46:39 by ppalamio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <disorder.h>
+#include <normalize.h>
 
 /** @brief calculate disorder metric
  *
@@ -22,7 +23,7 @@
  * @param a stack **a**
  * @return disorder metric of a stack
  */
-double	calculate_disorder(t_list **a)
+double	calculate_disorder(t_stack *a)
 {
 	int			mistakes;
 	int			total_pairs;
@@ -31,14 +32,15 @@ double	calculate_disorder(t_list **a)
 
 	mistakes = 0;
 	total_pairs = 0;
-	i = *a;
+	i = a->list;
 	while (i->next)
 	{
 		j = i->next;
 		while (j)
 		{
 			total_pairs++;
-			if (*((int *)(i->content)) > *((int *)(j->content)))
+			if (((t_stack_element *)i->content)->index
+				> ((t_stack_element *)j->content)->index)
 				mistakes++;
 			j = j->next;
 		}

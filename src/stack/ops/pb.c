@@ -31,6 +31,6 @@ int	pb(t_stack *a, t_stack *b, bool print)
 	if (push(b, a))
 		return (1);
 	if (print)
-		ft_putendl_fd("pb", 0);
+		ft_putendl_fd("pb", 1);
 	return (0);
 }

@@ -15,6 +15,7 @@
 
 # include <bench.h>
 # include <libft.h>
+# include <stack/s_stack.h>
 
 typedef enum e_algorithm
 {
@@ -32,7 +33,7 @@ typedef struct s_options
 }	t_options;
 
 int				parse(int argc, char **argv, t_options *options,
-					t_list **a);
+					t_stack *a);
 const char		*get_strategy(t_algorithm selected, double disorder);
 void			print_bench(const t_bench *bench);
 
