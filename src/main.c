@@ -6,7 +6,7 @@
 /*   By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 19:48:45 by kjurkows          #+#    #+#             */
-/*   Updated: 2026/08/22 22:10:21 by kjurkows         ###   ########.fr       */
+/*   Updated: 2026/08/22 22:17:45 by kjurkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <disorder.h>
 #include <bench.h>
 #include "parser/parser.h"
+#include <ft_printf.h>
 
 // static t_algorithm	select_algorithm(t_algorithm requested, double disorder)
 // {
@@ -68,6 +69,26 @@
 // 	return (1);
 // }
 
+void	print_stacks(t_stack *a, t_stack *b)
+{
+	t_stack_element	*cur;
+
+	ft_eprintf("A (%d):\n", a->size);
+	cur = a->list;
+	while (cur)
+	{
+		ft_eprintf("%d ", cur->val);
+		cur = cur->next;
+	}
+	ft_eprintf("\nB (%d):\n", b->size);
+	cur = b->list;
+	while (cur)
+	{
+		ft_eprintf("%d ", cur->val);
+		cur = cur->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack		*a;
@@ -76,12 +97,14 @@ int	main(int argc, char **argv)
 
 	a = parse(argc, argv, &options);
 	b = stack_init();
+	print_stacks(a, b);
 	if (!a || !b)
 	{
 		ft_putendl_fd("Error", 2);
 		return (1);
 	}
 	complex(a, b);
+	print_stacks(a, b);
 	stack_free(a);
 	stack_free(b);
 	return (0);

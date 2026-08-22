@@ -4,3 +4,4 @@ objs_test/
 results.txt
 push_swap*
 args
+err.out

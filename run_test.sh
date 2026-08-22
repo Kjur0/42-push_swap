@@ -7,7 +7,7 @@
 #    By: kjurkows <kjurkows@student.42warsaw.pl>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/22 21:47:09 by kjurkows          #+#    #+#              #
-#    Updated: 2026/08/22 22:03:07 by kjurkows         ###   ########.fr        #
+#    Updated: 2026/08/22 22:13:31 by kjurkows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,5 +18,5 @@ fi
 
 shuf -i 0-9999 -n $1 > args
 
-./push_swap $(cat args) | wc -l
+./push_swap $(cat args) 2> err.out| wc -l
 ./push_swap $(cat args) | ./checker_linux $(cat args)
