@@ -95,6 +95,22 @@ Results are saved into `results.txt` displaying min/max/avg of operations groupe
 
 Selected algorithm: Min/Max Selection Sort
 
+`simple` sorts stack `a` by repeatedly picking out its current smallest - or biggest - value into stack `b`, then draining `b` back into `a` once only the 3 largest values are left.
+
+1. **Trivial sizes** — 0 or 1 elements need no work. With exactly 2, a single `sa` is done if they're out of order.
+2. **Normalized ranks** — every element carries an `index`, its rank among all values on the stack (`0` = smallest, `n-1` = largest), computed once beforehand. From this point on the algorithm only ever compares ranks, never raw values.
+3. **Selection loop** — while `a` has more than 3 elements, it hunts for the element whose rank equals the current `target`, starting at `0`:
+   - `get_position` finds how far down `a` that element sits.
+   - `rotate_to_top` brings it to the top the cheap way: `ra` (rotate up) if it's closer to the top, `rra` (rotate down) if it's closer to the bottom.
+   - `pb` pushes it onto `b`.
+   - `target` is incremented so the next iteration looks for the next-smallest value.
+
+   Because ranks are pushed to `b` in increasing order (`0, 1, 2, …`), they end up stacked in decreasing order from top to bottom.
+4. **Sorting the last 3** — once `a` is down to 3 elements, `sort_three` fixes their order directly with at most one `sa`/`ra`/`rra` combo (of the 6 possible orderings, only 4 aren't already sorted).
+5. **Draining `b`** — `pa` is called until `b` is empty. Since `b` pops largest-remaining-rank first and smallest (`0`) last, every value landing on top of `a` is smaller than the one already there, so `a` comes out fully sorted, ascending from top to bottom.
+
+Each of the `n - 3` selection steps costs up to `O(n)` for the search plus the rotation, which gives the overall $`O(n^2)`$ complexity.
+
 ### Medium algorithm ($`\textbf O(n \sqrt n)`$) [$`0.2\le disorder\lt0.5`$]
 
 Selected algorithm: index-based bucket sort
